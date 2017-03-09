@@ -1,5 +1,5 @@
 
-#include "Quad.h"
+#include "iostream.h"
 
 
 Quad::Quad()

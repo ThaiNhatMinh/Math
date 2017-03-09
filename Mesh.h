@@ -16,7 +16,7 @@ public:
 public:
 	Mesh();
 	~Mesh();
-
 	void Finalize();
+	
 };
 

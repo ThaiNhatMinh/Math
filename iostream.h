@@ -30,7 +30,12 @@ using std::vector;
 #include "Timer.h"
 #include "Log.h"
 #include "Shader.h"
-//#include "Cube.h"
+
+#include "Mesh.h"
+#include "Quad.h"
+#include "Cube.h"
+#include "Axis.h"
+
 #include "ResourceLoader.h"
 
 #include "ILight.h"
@@ -38,5 +43,7 @@ using std::vector;
 #include "PointLight.h"
 #include "Spotlight.h"
 
+// renderer
 #include "RenderTarget.h"
+#include "SkyBox.h"
 #endif

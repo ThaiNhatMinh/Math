@@ -134,6 +134,7 @@
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Spotlight.cpp" />
     <ClCompile Include="StackAllocator.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Spotlight.h" />
     <ClInclude Include="StackAllocator.h" />
     <ClInclude Include="Timer.h" />
@@ -177,6 +179,8 @@
     <None Include="Simple.frag" />
     <None Include="Simple.vs" />
     <None Include="Simple2D.vs" />
+    <None Include="SkyBox.frag" />
+    <None Include="SkyBox.vs" />
     <None Include="Sun.vs" />
   </ItemGroup>
   <ItemGroup>

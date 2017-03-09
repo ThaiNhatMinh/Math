@@ -10,9 +10,10 @@ public:
 
 public:
 	Shader(const char* vertexShaderFile,const char* fragmentShaderFile);
+	Shader() {};
 	~Shader();
 
-	
+	bool Load(const char* vertexShaderFile, const char* fragmentShaderFile);
 	inline void Use() { glUseProgram(m_iProgramID); };
 	inline void SetUniformMatrix(const char* name, float* data) { glUniformMatrix4fv(glGetUniformLocation(m_iProgramID, name),1,GL_FALSE,data); }
 	inline void SetUniform(const char* name, int val){ glUniform1i(glGetUniformLocation(m_iProgramID, name),val); }

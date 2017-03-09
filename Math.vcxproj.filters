@@ -29,6 +29,9 @@
     <Filter Include="Renderer">
       <UniqueIdentifier>{9b45159a-197e-4a5e-ae05-1556a7c759f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{7f12d77d-1d89-4161-94f5-6d10b9617827}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -67,22 +70,13 @@
     <ClCompile Include="SceneNode.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TestPlane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GLFW_Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Common.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
@@ -113,7 +107,19 @@
       <Filter>Light</Filter>
     </ClCompile>
     <ClCompile Include="RenderTarget.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,21 +162,11 @@
     <ClInclude Include="Math\MatrixStack.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Common.h" />
     <ClInclude Include="Mesh.h">
       <Filter>Mesh</Filter>
     </ClInclude>
     <ClInclude Include="Quad.h">
       <Filter>Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="iostream.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>Source Files</Filter>
@@ -197,7 +193,24 @@
     <ClInclude Include="Spotlight.h">
       <Filter>Light</Filter>
     </ClInclude>
-    <ClInclude Include="RenderTarget.h" />
+    <ClInclude Include="RenderTarget.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="iostream.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Simple.vs">
@@ -216,6 +229,12 @@
       <Filter>Shader Program</Filter>
     </None>
     <None Include="Quad.frag">
+      <Filter>Shader Program</Filter>
+    </None>
+    <None Include="SkyBox.vs">
+      <Filter>Shader Program</Filter>
+    </None>
+    <None Include="SkyBox.frag">
       <Filter>Shader Program</Filter>
     </None>
   </ItemGroup>
