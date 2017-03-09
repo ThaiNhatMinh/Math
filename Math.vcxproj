@@ -130,6 +130,7 @@
     <ClCompile Include="Physic\pfgen.cpp" />
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Physic\pfgen.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="Quad.h" />
+    <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="Shader.h" />
@@ -170,6 +172,8 @@
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Quad.frag" />
+    <None Include="Quad.vs" />
     <None Include="Simple.frag" />
     <None Include="Simple.vs" />
     <None Include="Simple2D.vs" />

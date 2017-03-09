@@ -1,7 +1,7 @@
 #pragma once
 #include "iostream.h"
 
-struct cl_texture_t
+struct Texture
 {
 	char szName[64];
 	GLuint iIndex;
@@ -13,19 +13,33 @@ struct cl_texture_t
 	inline void UnBind() { glBindTexture(GL_TEXTURE_2D, 0); };
 };
 
+struct DtxHeader
+{
+	unsigned int iResType;
+	int iVersion;
+	unsigned short usWidth;
+	unsigned short usHeight;
+	unsigned short usMipmaps;
+	unsigned short usSections;
+	int iFlags;
+	int iUserFlags;
+	unsigned char ubExtra[12];
+	char szCommandString[128];
+};
 
 class Resources
 {
 private:
-	static vector<cl_texture_t*> m_Textures;
+	static vector<Texture*> m_Textures;
 
 private:
-	static cl_texture_t* HasTexture(const char* filename);
+	static Texture* HasTexture(const char* filename);
 
 public:
 	Resources();
 	~Resources();
-	static cl_texture_t* LoadTexture(const char* filename);
+	static Texture* LoadTexture(const char* filename);
+	static Texture* LoadDTX(const char* filename);
 	static void Release();
 
 };

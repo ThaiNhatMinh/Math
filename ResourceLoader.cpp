@@ -2,9 +2,9 @@
 #include "SOIL.h"
 
 #pragma comment(lib,"SOIL.lib")
-vector<cl_texture_t*> Resources::m_Textures;
+vector<Texture*> Resources::m_Textures;
 
-cl_texture_t * Resources::HasTexture(const char * filename)
+Texture * Resources::HasTexture(const char * filename)
 {
 	for (size_t i = 0; i < m_Textures.size(); i++)
 		if (!strcmp(m_Textures[i]->szName, filename))
@@ -23,9 +23,9 @@ Resources::~Resources()
 	
 }
 
-cl_texture_t * Resources::LoadTexture(const char * filename)
+Texture * Resources::LoadTexture(const char * filename)
 {
-	cl_texture_t* tex=NULL;
+	Texture* tex=NULL;
 	if ((tex = HasTexture(filename)) != NULL) return tex;
 
 	GLint width, height;
@@ -50,7 +50,7 @@ cl_texture_t * Resources::LoadTexture(const char * filename)
 
 	SOIL_free_image_data(image);
 
-	tex = new cl_texture_t;
+	tex = new Texture;
 	sprintf(tex->szName, "%s", filename);
 	tex->iIndex = id;
 	tex->iWidth = width;
@@ -60,6 +60,16 @@ cl_texture_t * Resources::LoadTexture(const char * filename)
 
 
 	return tex;
+}
+
+Texture * Resources::LoadDTX(const char * filename)
+{
+	Texture* tex = NULL;
+	if ((tex = HasTexture(filename)) != NULL) return tex;
+
+	GLint width, height;
+
+	return nullptr;
 }
 
 void Resources::Release()

@@ -26,6 +26,9 @@
     <Filter Include="Light">
       <UniqueIdentifier>{8bf91132-2143-49ec-a802-1213ed4a2fa3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{9b45159a-197e-4a5e-ae05-1556a7c759f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -109,6 +112,9 @@
     <ClCompile Include="Spotlight.cpp">
       <Filter>Light</Filter>
     </ClCompile>
+    <ClCompile Include="RenderTarget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\EulerAngles.h">
@@ -191,6 +197,7 @@
     <ClInclude Include="Spotlight.h">
       <Filter>Light</Filter>
     </ClInclude>
+    <ClInclude Include="RenderTarget.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Simple.vs">
@@ -203,6 +210,12 @@
       <Filter>Shader Program</Filter>
     </None>
     <None Include="Sun.vs">
+      <Filter>Shader Program</Filter>
+    </None>
+    <None Include="Quad.vs">
+      <Filter>Shader Program</Filter>
+    </None>
+    <None Include="Quad.frag">
       <Filter>Shader Program</Filter>
     </None>
   </ItemGroup>

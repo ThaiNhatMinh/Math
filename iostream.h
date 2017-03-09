@@ -38,4 +38,5 @@ using std::vector;
 #include "PointLight.h"
 #include "Spotlight.h"
 
+#include "RenderTarget.h"
 #endif
