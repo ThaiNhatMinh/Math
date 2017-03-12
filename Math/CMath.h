@@ -44,6 +44,7 @@ public:
 	// Matrix 3D Operators
 	static Matrix4 LookAt(Vector3 cameraPosition, Vector3 cameraTarget, Vector3 cameraUpVector);
 	static Matrix4 Perspective(float FOV, float aspectRaito, float Znear, float Zfar);
+	static Matrix4 Ortho(float width, float height);
 	// Quaternion Operators
 	static Quaternion Pow(const Quaternion& Q, float exponent);
 	static Quaternion slerp(const Quaternion& from, const Quaternion& to, float t); 

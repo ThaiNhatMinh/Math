@@ -57,6 +57,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug GLFW|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\Code Collection\OpenGL\Math\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -111,13 +112,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Axis.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Common.cpp" />
-    <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="DirectionLight.cpp" />
+    <ClCompile Include="Common\Common.cpp" />
+    <ClCompile Include="Common\Log.cpp" />
+    <ClCompile Include="Common\Shader.cpp" />
+    <ClCompile Include="Common\Timer.cpp" />
     <ClCompile Include="GLFW_Main.cpp" />
-    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="Light\DirectionLight.cpp" />
+    <ClCompile Include="Light\PointLight.cpp" />
+    <ClCompile Include="Light\Spotlight.cpp" />
     <ClCompile Include="Math\CMath.cpp" />
     <ClCompile Include="Math\EulerAngles.cpp" />
     <ClCompile Include="Math\Frustum.cpp" />
@@ -125,32 +128,33 @@
     <ClCompile Include="Math\Plane.cpp" />
     <ClCompile Include="Math\Quaternion.cpp" />
     <ClCompile Include="Math\Vector.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Mesh\Axis.cpp" />
+    <ClCompile Include="Mesh\Cube.cpp" />
+    <ClCompile Include="Mesh\Mesh.cpp" />
+    <ClCompile Include="Mesh\Quad.cpp" />
+    <ClCompile Include="Physic\Particle.cpp" />
     <ClCompile Include="Physic\pfgen.cpp" />
-    <ClCompile Include="PointLight.cpp" />
-    <ClCompile Include="Quad.cpp" />
-    <ClCompile Include="RenderTarget.cpp" />
-    <ClCompile Include="ResourceLoader.cpp" />
-    <ClCompile Include="SceneNode.cpp" />
-    <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="SkyBox.cpp" />
+    <ClCompile Include="Renderer\Font.cpp" />
+    <ClCompile Include="Renderer\MSSA.cpp" />
+    <ClCompile Include="Renderer\RenderTarget.cpp" />
+    <ClCompile Include="Renderer\SkyBox.cpp" />
+    <ClCompile Include="Resource\ResourceLoader.cpp" />
+    <ClCompile Include="Scene\SceneNode.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Spotlight.cpp" />
     <ClCompile Include="StackAllocator.cpp" />
     <ClCompile Include="TestPlane.cpp" />
-    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Axis.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Common.h" />
-    <ClInclude Include="Cube.h" />
-    <ClInclude Include="DirectionLight.h" />
-    <ClInclude Include="ILight.h" />
-    <ClInclude Include="Interface.h" />
+    <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Common\Log.h" />
+    <ClInclude Include="Common\Shader.h" />
+    <ClInclude Include="Common\Timer.h" />
     <ClInclude Include="iostream.h" />
-    <ClInclude Include="Log.h" />
+    <ClInclude Include="Light\DirectionLight.h" />
+    <ClInclude Include="Light\ILight.h" />
+    <ClInclude Include="Light\PointLight.h" />
+    <ClInclude Include="Light\Spotlight.h" />
     <ClInclude Include="Math\CMath.h" />
     <ClInclude Include="Math\EulerAngles.h" />
     <ClInclude Include="Math\Frustum.h" />
@@ -159,32 +163,35 @@
     <ClInclude Include="Math\Plane.h" />
     <ClInclude Include="Math\Quaternion.h" />
     <ClInclude Include="Math\Vector.h" />
-    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Mesh\Axis.h" />
+    <ClInclude Include="Mesh\Cube.h" />
+    <ClInclude Include="Mesh\Mesh.h" />
+    <ClInclude Include="Mesh\Quad.h" />
     <ClInclude Include="Physic\Particle.h" />
     <ClInclude Include="Physic\pfgen.h" />
-    <ClInclude Include="PointLight.h" />
-    <ClInclude Include="Quad.h" />
-    <ClInclude Include="RenderTarget.h" />
-    <ClInclude Include="ResourceLoader.h" />
-    <ClInclude Include="SceneNode.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="SkyBox.h" />
-    <ClInclude Include="Spotlight.h" />
+    <ClInclude Include="Renderer\Font.h" />
+    <ClInclude Include="Renderer\FrameBuffer.h" />
+    <ClInclude Include="Renderer\MSSA.h" />
+    <ClInclude Include="Renderer\RenderTarget.h" />
+    <ClInclude Include="Renderer\SkyBox.h" />
+    <ClInclude Include="Resource\ResourceLoader.h" />
+    <ClInclude Include="Scene\Interface.h" />
+    <ClInclude Include="Scene\SceneNode.h" />
     <ClInclude Include="StackAllocator.h" />
-    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Quad.frag" />
-    <None Include="Quad.vs" />
-    <None Include="Simple.frag" />
-    <None Include="Simple.vs" />
-    <None Include="Simple2D.vs" />
-    <None Include="SkyBox.frag" />
-    <None Include="SkyBox.vs" />
-    <None Include="Sun.vs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Sun.frag" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="Game\Shader\Quad.frag" />
+    <None Include="Game\Shader\Quad.vs" />
+    <None Include="Game\Shader\Simple.frag" />
+    <None Include="Game\Shader\Simple.vs" />
+    <None Include="Game\Shader\Simple2D.vs" />
+    <None Include="Game\Shader\SkyBox.frag" />
+    <None Include="Game\Shader\SkyBox.vs" />
+    <None Include="Game\Shader\Sun.frag" />
+    <None Include="Game\Shader\Sun.vs" />
+    <None Include="Game\Shader\Text2D.frag" />
+    <None Include="Game\Shader\Text2D.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -166,6 +166,19 @@ float Math::ASin(float fValue)
 	 */
  }
 
+ Matrix4 Math::Ortho(float width, float height)
+ {
+	 float right = width;
+	 float left = 0;
+	 float top = height;
+	 float bottom = 0;
+
+	 return Matrix4(2.0f/(right-left),		0,					0,						0,
+					0,						2.0f/(top-bottom),	0,						0,
+					0,						0,					-1.0f,					0,
+		 -(right + left) / (right - left), -(top + bottom) / (top - bottom),					0,						1			);
+ }
+
 void Math::GetBasicVector(const Matrix4& M, Vec3& xaxis, Vec3& yaxis, Vec3& zaxis)
 {
 	xaxis.set( M.mV[0], M.mV[4], M.mV[8]);

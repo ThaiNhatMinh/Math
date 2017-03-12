@@ -2,7 +2,7 @@
 #include "Math\CMath.h"
 #include "Math\Plane.h"
 
-#include "iostream.h"
+#include "..\iostream.h"
 
 void main_plane()
 {

@@ -25,25 +25,32 @@ using std::vector;
 #include "Math\Matrix.h"
 #include "Math\Quaternion.h"
 
+//Common
+#include "Common\Common.h"
+#include "Common\Timer.h"
+#include "Common\Log.h"
+#include "Common\Shader.h"
 
-#include "Common.h"
-#include "Timer.h"
-#include "Log.h"
-#include "Shader.h"
+// Mesh 
+#include "Mesh\Mesh.h"
+#include "Mesh\Quad.h"
+#include "Mesh\Cube.h"
+#include "Mesh\Axis.h"
 
-#include "Mesh.h"
-#include "Quad.h"
-#include "Cube.h"
-#include "Axis.h"
+// Resouce 
+#include "Resource\ResourceLoader.h"
 
-#include "ResourceLoader.h"
 
-#include "ILight.h"
-#include "DirectionLight.h"
-#include "PointLight.h"
-#include "Spotlight.h"
+// Light
+#include "Light\ILight.h"
+#include "Light\DirectionLight.h"
+#include "Light\PointLight.h"
+#include "Light\Spotlight.h"
 
 // renderer
-#include "RenderTarget.h"
-#include "SkyBox.h"
+#include "Renderer\SkyBox.h"
+#include "Renderer\Font.h"
+#include "Renderer\FrameBuffer.h"
+#include "Renderer\RenderTarget.h"
+#include "Renderer\MSSA.h"
 #endif

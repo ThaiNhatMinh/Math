@@ -52,12 +52,6 @@
     <ClCompile Include="Math\Vector.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Physic</Filter>
-    </ClCompile>
-    <ClCompile Include="Physic\pfgen.cpp">
-      <Filter>Physic</Filter>
-    </ClCompile>
     <ClCompile Include="Math\CMath.cpp">
       <Filter>Math</Filter>
     </ClCompile>
@@ -67,59 +61,71 @@
     <ClCompile Include="Math\Frustum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SceneNode.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="TestPlane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GLFW_Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="Quad.cpp">
-      <Filter>Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="Axis.cpp">
-      <Filter>Mesh</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceLoader.cpp">
+    <ClCompile Include="Common\Common.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Log.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Timer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Light\DirectionLight.cpp">
+      <Filter>Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Light\PointLight.cpp">
+      <Filter>Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Light\Spotlight.cpp">
+      <Filter>Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Axis.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Cube.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Mesh.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Quad.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Physic\Particle.cpp">
+      <Filter>Physic</Filter>
+    </ClCompile>
+    <ClCompile Include="Physic\pfgen.cpp">
+      <Filter>Physic</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Font.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\RenderTarget.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\SkyBox.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\ResourceLoader.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="DirectionLight.cpp">
-      <Filter>Light</Filter>
+    <ClCompile Include="Scene\SceneNode.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="PointLight.cpp">
-      <Filter>Light</Filter>
+    <ClCompile Include="Common\Shader.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Spotlight.cpp">
-      <Filter>Light</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderTarget.cpp">
+    <ClCompile Include="Renderer\MSSA.cpp">
       <Filter>Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="SkyBox.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Common.cpp">
-      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,17 +144,8 @@
     <ClInclude Include="Math\Vector.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Physic\Particle.h">
-      <Filter>Physic</Filter>
-    </ClInclude>
-    <ClInclude Include="Physic\pfgen.h">
-      <Filter>Physic</Filter>
-    </ClInclude>
     <ClInclude Include="Math\CMath.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Interface.h">
-      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Math\Plane.h">
       <Filter>Math</Filter>
@@ -156,91 +153,112 @@
     <ClInclude Include="Math\Frustum.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="SceneNode.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Math\MatrixStack.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Quad.h">
-      <Filter>Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Axis.h">
-      <Filter>Mesh</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="ResourceLoader.h">
+    <ClInclude Include="iostream.h" />
+    <ClInclude Include="Common\Common.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Log.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Timer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Light\DirectionLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Light\ILight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Light\PointLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Light\Spotlight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Axis.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Cube.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Mesh.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Quad.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Physic\Particle.h">
+      <Filter>Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="Physic\pfgen.h">
+      <Filter>Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Font.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\RenderTarget.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\SkyBox.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ResourceLoader.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="ILight.h">
-      <Filter>Light</Filter>
+    <ClInclude Include="Scene\Interface.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="DirectionLight.h">
-      <Filter>Light</Filter>
+    <ClInclude Include="Scene\SceneNode.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="PointLight.h">
-      <Filter>Light</Filter>
+    <ClInclude Include="Common\Shader.h">
+      <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Spotlight.h">
-      <Filter>Light</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderTarget.h">
+    <ClInclude Include="Renderer\FrameBuffer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="SkyBox.h">
+    <ClInclude Include="Renderer\MSSA.h">
       <Filter>Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Common.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="iostream.h">
-      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Simple.vs">
+    <None Include="ClassDiagram.cd" />
+    <None Include="Game\Shader\Quad.frag">
       <Filter>Shader Program</Filter>
     </None>
-    <None Include="Simple.frag">
+    <None Include="Game\Shader\Quad.vs">
       <Filter>Shader Program</Filter>
     </None>
-    <None Include="Simple2D.vs">
+    <None Include="Game\Shader\Simple.vs">
       <Filter>Shader Program</Filter>
     </None>
-    <None Include="Sun.vs">
+    <None Include="Game\Shader\Simple2D.vs">
       <Filter>Shader Program</Filter>
     </None>
-    <None Include="Quad.vs">
+    <None Include="Game\Shader\SkyBox.frag">
       <Filter>Shader Program</Filter>
     </None>
-    <None Include="Quad.frag">
+    <None Include="Game\Shader\SkyBox.vs">
       <Filter>Shader Program</Filter>
     </None>
-    <None Include="SkyBox.vs">
+    <None Include="Game\Shader\Sun.frag">
       <Filter>Shader Program</Filter>
     </None>
-    <None Include="SkyBox.frag">
+    <None Include="Game\Shader\Sun.vs">
       <Filter>Shader Program</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Sun.frag">
+    <None Include="Game\Shader\Text2D.frag">
       <Filter>Shader Program</Filter>
-    </Text>
+    </None>
+    <None Include="Game\Shader\Text2D.vs">
+      <Filter>Shader Program</Filter>
+    </None>
+    <None Include="Game\Shader\Simple.frag">
+      <Filter>Shader Program</Filter>
+    </None>
   </ItemGroup>
 </Project>
