@@ -21,5 +21,8 @@ public:
 	inline void SetUniform(const char* name, float x,float y,float z) { glUniform3f(glGetUniformLocation(m_iProgramID, name), x, y, z); }
 	inline void SetUniform(const char* name, float x, float y) { glUniform2f(glGetUniformLocation(m_iProgramID, name), x, y); }
 	inline void SetUniform(const char* name, float val) { glUniform1f(glGetUniformLocation(m_iProgramID, name), val); }
+
+	inline GLuint GetAttribLocation(const char* name) { return glGetAttribLocation(m_iProgramID, name); };
+	inline GLuint GetUniformLocation(const char* name) { return glGetUniformLocation(m_iProgramID, name); };
 };
 

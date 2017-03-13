@@ -46,7 +46,7 @@ bool Font::Init(int w,int h)
 		return false;
 	}
 
-	FT_Set_Pixel_Sizes(face, 0, 20);
+	FT_Set_Pixel_Sizes(face, 0, 14);
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 

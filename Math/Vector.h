@@ -77,7 +77,8 @@ public:
 	Vector3& operator-=(const Vector3& v);
 	Vector3& operator*=(float Scalar);
 	Vector3& operator/=(float Scalar);
-
+	float& operator[](int index);
+	float operator[](int index)const;
 	// Geometric Operations
 	float Length() const;
 	float SquareLength() const;

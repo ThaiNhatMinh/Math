@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include <sstream>
 // this file include basic I/O and basic data struct: string, vector
 using std::cout;
 using std::endl;
@@ -30,7 +30,7 @@ using std::vector;
 #include "Common\Timer.h"
 #include "Common\Log.h"
 #include "Common\Shader.h"
-
+#include "Camera.h"
 // Mesh 
 #include "Mesh\Mesh.h"
 #include "Mesh\Quad.h"
@@ -53,4 +53,7 @@ using std::vector;
 #include "Renderer\FrameBuffer.h"
 #include "Renderer\RenderTarget.h"
 #include "Renderer\MSSA.h"
+
+// Windows
+#include "Windows.h"
 #endif

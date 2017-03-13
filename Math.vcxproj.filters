@@ -32,6 +32,9 @@
     <Filter Include="Common">
       <UniqueIdentifier>{7f12d77d-1d89-4161-94f5-6d10b9617827}</UniqueIdentifier>
     </Filter>
+    <Filter Include="World">
+      <UniqueIdentifier>{b1791177-0eeb-464d-b8c3-626a1e0a215e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -58,16 +61,10 @@
     <ClCompile Include="Math\Plane.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="Math\Frustum.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TestPlane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GLFW_Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Common\Common.cpp">
@@ -127,6 +124,27 @@
     <ClCompile Include="Renderer\MSSA.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="World\Bsp.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Entity.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Image.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\BspRenderer.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Frustum.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\EulerAngles.h">
@@ -150,13 +168,9 @@
     <ClInclude Include="Math\Plane.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Math\Frustum.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Math\MatrixStack.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="iostream.h" />
     <ClInclude Include="Common\Common.h">
       <Filter>Common</Filter>
@@ -224,6 +238,30 @@
     <ClInclude Include="Renderer\MSSA.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="World\Bsp.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\BspDef.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Entity.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Image.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\BspRenderer.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Frustum.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Windows.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -258,6 +296,12 @@
       <Filter>Shader Program</Filter>
     </None>
     <None Include="Game\Shader\Simple.frag">
+      <Filter>Shader Program</Filter>
+    </None>
+    <None Include="Game\Shader\basic_shader.frag">
+      <Filter>Shader Program</Filter>
+    </None>
+    <None Include="Game\Shader\basic_shader.vert">
       <Filter>Shader Program</Filter>
     </None>
   </ItemGroup>

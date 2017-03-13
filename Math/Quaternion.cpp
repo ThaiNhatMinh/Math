@@ -82,6 +82,7 @@ void Quaternion::setRotateYAxis(float theta)
 	z = 0.0f;
 }
 
+// input: theta in 360*
 void Quaternion::setRotateZAxis(float theta)
 {
 	float thetaOver2 = theta*0.5f;

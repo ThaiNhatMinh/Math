@@ -118,4 +118,21 @@ void GameTimer::Tick()
 	// Prepare for next frame
 	m_PrevTime = m_CurrentTime;
 
+	static float timepass = 0;
+	static float fps = 0;
+	fps++;
+	timepass += m_DeltaTime;
+	if (timepass > 1.0f)
+	{
+		m_FPS = fps;
+		fps = 0.0f;
+		timepass = 0.0f;
+	}
+
+}
+
+int GameTimer::GetFPS()
+{
+	
+	return m_FPS;
 }

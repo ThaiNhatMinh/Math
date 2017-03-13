@@ -280,6 +280,17 @@ Vector3& Vector3::operator/=(float Scalar)
 	return *this;
 }
 
+float & Vector3::operator[](int index)
+{
+	// TODO:
+	return (&x)[index];
+}
+
+float Vector3::operator[](int index) const
+{
+	return (&x)[index];
+}
+
 float Vector3::Length() const
 {
 	return sqrtf(x*x + y*y + z*z);

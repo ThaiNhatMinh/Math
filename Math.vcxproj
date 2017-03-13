@@ -143,6 +143,11 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StackAllocator.cpp" />
     <ClCompile Include="TestPlane.cpp" />
+    <ClCompile Include="Windows.cpp" />
+    <ClCompile Include="World\Bsp.cpp" />
+    <ClCompile Include="World\BspRenderer.cpp" />
+    <ClCompile Include="World\Entity.cpp" />
+    <ClCompile Include="World\Image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -178,9 +183,17 @@
     <ClInclude Include="Scene\Interface.h" />
     <ClInclude Include="Scene\SceneNode.h" />
     <ClInclude Include="StackAllocator.h" />
+    <ClInclude Include="Windows.h" />
+    <ClInclude Include="World\Bsp.h" />
+    <ClInclude Include="World\BspDef.h" />
+    <ClInclude Include="World\BspRenderer.h" />
+    <ClInclude Include="World\Entity.h" />
+    <ClInclude Include="World\Image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="Game\Shader\basic_shader.frag" />
+    <None Include="Game\Shader\basic_shader.vert" />
     <None Include="Game\Shader\Quad.frag" />
     <None Include="Game\Shader\Quad.vs" />
     <None Include="Game\Shader\Simple.frag" />

@@ -14,6 +14,7 @@ private:
 	bool m_bStoped;
 	double m_SecondPerCount;
 	double m_DeltaTime;
+	int m_FPS;
 public:
 	GameTimer();
 	~GameTimer();
@@ -25,7 +26,7 @@ public:
 	void Start();	// call when unpause
 	void Stop();	// call when pause
 	void Tick();	// call every frame
-
+	int GetFPS();
 
 };
 
