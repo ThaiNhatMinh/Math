@@ -13,6 +13,7 @@ public:
 	vector<Vec2> m_vUVs;
 	vector<unsigned int> m_vIndices;
 	GLuint Topology;
+	Texture* m_pTexture; // If there is no texture. It will use color
 public:
 	Mesh();
 	~Mesh();

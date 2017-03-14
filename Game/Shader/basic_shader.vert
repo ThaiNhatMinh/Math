@@ -1,37 +1,27 @@
 #version 140
 
-in vec3 position;
-in vec3 normal;
+// neu co bien khong dung toi thi trinh bien dich se tu dong xoa khi bien dich.
+in vec3 position;	// location = 0
+in vec3 normal;		// location = 1
+in vec2 uv;			// location = 2, neu normal khong duoc dung toi no se bi xoa va location cua uv se la 1
 
-uniform mat4 MVP;
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
 
-//uniform vec3 lightPosition;
 
-//out vec4 normalVector;
-//out vec4 worldPosition;
-//out vec4 eyeDirection;
-//out vec4 lightDirection;
-
-out vec3 vNormals;
+out vec2 TexCoord;
+out vec3 Normal;
 out vec3 vFragPos;
+
+uniform mat4 Model;
+uniform mat4 View;
+uniform mat4 Proj;
 
 void main()
 {
-    gl_Position = projection * view * model * vec4(position, 1.0f);
-
-    //worldPosition = model * vec4(position, 1.0f);
-   // vec4 vertexPositionCameraspace = view * model * vec4(position, 1);
-   // eyeDirection = -vertexPositionCameraspace;
-   // vec4 lightPositionCameraspace = view * vec4(lightPosition, 1.0f);
-   // lightDirection = lightPositionCameraspace + eyeDirection;
-    //normalVector = view * model * vec4(normal, 0.0f);
-
-
-	vNormals = vec3(model*vec4(normal,1.0f));
 	
-	vFragPos  = vec3(model * vec4(position, 1.0f));
 
+	gl_Position = Proj*View*Model*vec4(position, 1.0);
+	Normal = vec3(Model * vec4(normal,1.0f));
+	TexCoord = uv;
+	vFragPos  = vec3(Model * vec4(position, 1.0f));
+	
 }

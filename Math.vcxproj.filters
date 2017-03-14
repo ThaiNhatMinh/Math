@@ -35,6 +35,9 @@
     <Filter Include="World">
       <UniqueIdentifier>{b1791177-0eeb-464d-b8c3-626a1e0a215e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="World\CSGO">
+      <UniqueIdentifier>{65f0052b-1dae-4172-9969-d721e462fa5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -124,18 +127,6 @@
     <ClCompile Include="Renderer\MSSA.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="World\Bsp.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="World\Entity.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="World\Image.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="World\BspRenderer.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -144,6 +135,27 @@
     </ClCompile>
     <ClCompile Include="Windows.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Quake3BSP.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\MapRenderer.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Bsp.cpp">
+      <Filter>World\CSGO</Filter>
+    </ClCompile>
+    <ClCompile Include="World\BspRenderer.cpp">
+      <Filter>World\CSGO</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Entity.cpp">
+      <Filter>World\CSGO</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Image.cpp">
+      <Filter>World\CSGO</Filter>
+    </ClCompile>
+    <ClCompile Include="World\BSPMesh.cpp">
+      <Filter>World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,21 +250,6 @@
     <ClInclude Include="Renderer\MSSA.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="World\Bsp.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="World\BspDef.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="World\Entity.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="World\Image.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="World\BspRenderer.h">
-      <Filter>World</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -261,6 +258,36 @@
     </ClInclude>
     <ClInclude Include="Windows.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Quake3BSP.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\MapRenderer.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Quake3BSPDef.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Bsp.h">
+      <Filter>World\CSGO</Filter>
+    </ClInclude>
+    <ClInclude Include="World\BspDef.h">
+      <Filter>World\CSGO</Filter>
+    </ClInclude>
+    <ClInclude Include="World\BspRenderer.h">
+      <Filter>World\CSGO</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Entity.h">
+      <Filter>World\CSGO</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Image.h">
+      <Filter>World\CSGO</Filter>
+    </ClInclude>
+    <ClInclude Include="World\BSPMesh.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Texture.h">
+      <Filter>Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

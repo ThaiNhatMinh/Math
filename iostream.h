@@ -31,14 +31,23 @@ using std::vector;
 #include "Common\Log.h"
 #include "Common\Shader.h"
 #include "Camera.h"
+
+
+// Resouce 
+#include "Resource\Texture.h"
+#include "Resource\ResourceLoader.h"
+
+
 // Mesh 
 #include "Mesh\Mesh.h"
 #include "Mesh\Quad.h"
 #include "Mesh\Cube.h"
 #include "Mesh\Axis.h"
 
-// Resouce 
-#include "Resource\ResourceLoader.h"
+#include "World\BSPMesh.h"
+#include "World\Quake3BSP.h"
+#include "World\MapRenderer.h"
+
 
 
 // Light

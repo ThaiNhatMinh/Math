@@ -1,7 +1,5 @@
 #include "iostream.h"
 #include "Camera.h"
-#include "World\Bsp.h"
-#include "World\BspRenderer.h"
 // Function prototypes
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -62,9 +60,9 @@ int main()
 	sky.LoadCubeTexture(filelist);
 	string text = "OpenGL 3.1";
 
-	//BSP bsp("Game\\de_dust2.bsp");
-	//bsp.LoadMapDetails(&camera);
-	//BspRenderer* bspRenderer = new BspRenderer(&bsp, &camera);
+	MapRenderer Quake;
+	Quake.Init("Game\\maps\\Level.bsp");
+	Shader Map("Game\\Shader\\basic_shader.vert", "Game\\Shader\\basic_shader.frag");
 	camera.SetSpeed(100);
 	// Game loop
 	while (!glfwWindowShouldClose(gWindow.Window()))
@@ -90,10 +88,13 @@ int main()
 		
 		sky.Render(SS, Projection);
 		//glDepthFunc(GL_LESS);
+
 		
+
+
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		simple.Use();
 
 		simple.SetUniform("EyePos", camera.GetPosition());
@@ -136,14 +137,16 @@ int main()
 		SunShader.SetUniformMatrix("Model", SunModel.ToFloatPtr());
 		glDrawArrays(Sun.Topology, 0, Sun.m_vPositions.size());
 		
-
+		
 
 		/* Render BSP data */
-		//bspRenderer->Begin();
-		//bspRenderer->Render(View,Projection);
-		//bspRenderer->End();
+		Quake.PreRender(View, Projection);
+		Quake.Render();
+		Quake.PostRender();
+	
 
-		
+
+
 		
 		mssa->EndFrame();
 		
