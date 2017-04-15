@@ -8,10 +8,27 @@ Shader::Shader(const char* vertexShaderFile, const char* fragmentShaderFile)
 
 }
 
+void Shader::LinkShader()
+{
+	GLint check;
+	char infoLog[512];
+	glLinkProgram(m_iProgramID);
+
+	glGetProgramiv(m_iProgramID, GL_LINK_STATUS, &check);
+	if (check == GL_FALSE)
+	{
+		glGetProgramInfoLog(m_iProgramID, 512, NULL, infoLog);
+		Log::Message(Log::LOG_ERROR, "Program Shader link error -> " + string(infoLog));
+	}
+}
+
 
 Shader::~Shader()
 {
-	glDeleteProgram(m_iProgramID);
+	//glDeleteProgram(m_iProgramID);
+
+	//glDeleteShader(m_i);
+	//glDeleteShader(fragmentShader);
 
 }
 
@@ -21,7 +38,7 @@ bool Shader::Load(const char * vertexShaderFile, const char * fragmentShaderFile
 	char sourceFragment[10000];
 	GLint check;
 	char infoLog[512];
-	GLuint vertexShader, fragmentShader;
+//	GLuint vertexShader, fragmentShader;
 
 
 	FILE* pvFile = fopen(vertexShaderFile, "rt");
@@ -54,49 +71,37 @@ bool Shader::Load(const char * vertexShaderFile, const char * fragmentShaderFile
 		sourceFragment[newLen] = '\0'; /* Just to be safe. */
 	}
 	fclose(pfFile);
-	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	m_iVertexShader = glCreateShader(GL_VERTEX_SHADER);
 	const char* pvStr = sourceVertex;
-	glShaderSource(vertexShader, 1, &pvStr, NULL);
-	glCompileShader(vertexShader);
+	glShaderSource(m_iVertexShader, 1, &pvStr, NULL);
+	glCompileShader(m_iVertexShader);
 
 
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &check);
+	glGetShaderiv(m_iVertexShader, GL_COMPILE_STATUS, &check);
 	if (check == GL_FALSE)
 	{
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+		glGetShaderInfoLog(m_iVertexShader, 512, NULL, infoLog);
 		Log::Message(Log::LOG_ERROR, "Vertex shader compile error -> " + string(infoLog));
 
 	}
 
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	m_iFragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	const char* pfStr = sourceFragment;
-	glShaderSource(fragmentShader, 1, &pfStr, NULL);
-	glCompileShader(fragmentShader);
+	glShaderSource(m_iFragmentShader, 1, &pfStr, NULL);
+	glCompileShader(m_iFragmentShader);
 
 
-	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &check);
+	glGetShaderiv(m_iFragmentShader, GL_COMPILE_STATUS, &check);
 	if (check == GL_FALSE)
 	{
-		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+		glGetShaderInfoLog(m_iFragmentShader, 512, NULL, infoLog);
 		Log::Message(Log::LOG_ERROR, "Fragment shader compile error -> " + string(infoLog));
 
 	}
 
-
 	m_iProgramID = glCreateProgram();
-	glAttachShader(m_iProgramID, vertexShader);
-	glAttachShader(m_iProgramID, fragmentShader);
-	glLinkProgram(m_iProgramID);
+	glAttachShader(m_iProgramID, m_iVertexShader);
+	glAttachShader(m_iProgramID, m_iFragmentShader);
 
-	glGetProgramiv(m_iProgramID, GL_LINK_STATUS, &check);
-	if (check == GL_FALSE)
-	{
-		glGetProgramInfoLog(m_iProgramID, 512, NULL, infoLog);
-		Log::Message(Log::LOG_ERROR, "Program Shader link error -> " + string(infoLog));
-	}
-
-
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
 	return true;
 }

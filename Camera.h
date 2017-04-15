@@ -2,6 +2,8 @@
 #include "..\iostream.h"
 class Camera
 {
+	friend class Frustum;
+	friend class MapRenderer;
 private:
 	Vec3 m_Position;
 	Vec3 m_Front;
@@ -23,12 +25,14 @@ public:
 	~Camera();
 
 	void OnKeyboard(int key,float deltaTime);
+	void Update(float dt);
 	void OnMouse(float dx, float dy);
 	mat4 GetViewMatrix();
 
 	inline void SetSpeed(float speed) { m_Speed = speed; };
 	inline Vec3 GetFront() { return m_Front; };
 	inline Vec3 GetPosition() { return m_Position; };
-
+	inline Vec2 GetRorate() { return Vec2(m_Pitch, m_Yaw); };
+	inline Vec3 GetUP() { return m_Up; };
 };
 

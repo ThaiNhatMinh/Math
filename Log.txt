@@ -1,4 +1,0 @@
-Debug: textures/gothic_ceiling/stucco7top
-Debug: textures/gothic_ceiling/woodceiling1a
-Debug: noshader
-Error: Can't load texture noshader

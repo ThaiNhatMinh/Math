@@ -38,6 +38,18 @@
     <Filter Include="World\CSGO">
       <UniqueIdentifier>{65f0052b-1dae-4172-9969-d721e462fa5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mesh\Studiomdl">
+      <UniqueIdentifier>{c5728831-d5d3-4ef4-b7c0-6cd051df9032}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Test Code">
+      <UniqueIdentifier>{8ea18621-db14-45d9-b4aa-d2fe472aa0f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh\LTB">
+      <UniqueIdentifier>{75c0bd9b-0938-4bad-a987-6ff11d5c55bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World\Terrain">
+      <UniqueIdentifier>{161874fe-5a16-4f9a-8b89-30db67ce2d1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -63,9 +75,6 @@
     </ClCompile>
     <ClCompile Include="Math\Plane.cpp">
       <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="TestPlane.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GLFW_Main.cpp">
       <Filter>Source Files</Filter>
@@ -156,6 +165,45 @@
     </ClCompile>
     <ClCompile Include="World\BSPMesh.cpp">
       <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Input.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\SMDModel.cpp">
+      <Filter>Mesh\Studiomdl</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\SMDRenderer.cpp">
+      <Filter>Mesh\Studiomdl</Filter>
+    </ClCompile>
+    <ClCompile Include="TestPlane.cpp">
+      <Filter>Source Files\Test Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Test SMD.cpp">
+      <Filter>Source Files\Test Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\SMDMesh.cpp">
+      <Filter>Mesh\Studiomdl</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\SMDAnimation.cpp">
+      <Filter>Mesh\Studiomdl</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\LTBFile.cpp">
+      <Filter>Mesh\LTB</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\SkeletonNode.cpp">
+      <Filter>Mesh\LTB</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\LTBRender.cpp">
+      <Filter>Mesh\LTB</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\LTBMesh.cpp">
+      <Filter>Mesh\LTB</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Terrain.cpp">
+      <Filter>World\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,9 +337,44 @@
     <ClInclude Include="Resource\Texture.h">
       <Filter>Resource</Filter>
     </ClInclude>
+    <ClInclude Include="Common\Input.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\SMDModel.h">
+      <Filter>Mesh\Studiomdl</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\SMDRenderer.h">
+      <Filter>Mesh\Studiomdl</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\SMDMesh.h">
+      <Filter>Mesh\Studiomdl</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\SMDAnimation.h">
+      <Filter>Mesh\Studiomdl</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\LTBFile.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\LTBDef.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\LTBMesh.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\SkeletonNode.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\LTBRender.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Terrain.h">
+      <Filter>World\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="Game\Shader\Quad.frag">
       <Filter>Shader Program</Filter>
     </None>
@@ -331,5 +414,19 @@
     <None Include="Game\Shader\basic_shader.vert">
       <Filter>Shader Program</Filter>
     </None>
+    <None Include="Game\Shader\Skeleton.frag">
+      <Filter>Shader Program</Filter>
+    </None>
+    <None Include="Game\Shader\Terrain.vs">
+      <Filter>Shader Program</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Game\Shader\Skeleton.vs">
+      <Filter>Shader Program</Filter>
+    </Text>
+    <Text Include="Game\Shader\Terrain.frag">
+      <Filter>Shader Program</Filter>
+    </Text>
   </ItemGroup>
 </Project>

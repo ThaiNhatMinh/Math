@@ -17,7 +17,9 @@ public:
 public:
 	Mesh();
 	~Mesh();
-	void Finalize();
+
+	// dirive class can redifine this function to add more data;
+	virtual void Finalize();
 	
 };
 

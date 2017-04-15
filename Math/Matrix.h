@@ -69,6 +69,8 @@ public:
 
 	// Vector3 operator*(const Vector3& v) const;
 	void Translate(const Vector3& v);
+	Vec3 GetTranslate2()const;
+	void Translate2(const Vector3& v);
 	Vec3 GetTranslate()const;
 	void Translate(float x, float y, float z);
 	Matrix4 Transpose() const;

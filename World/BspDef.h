@@ -46,7 +46,7 @@ typedef struct _Plane {
     Vec3 normal;
     float distance;
     int type;
-} Plane;
+} BSPPlane;
 
 typedef struct _Node {
     int planeIndex;

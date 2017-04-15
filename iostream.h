@@ -1,10 +1,11 @@
-#ifndef __HEADER__
-#define __HEADER__
+#ifndef __HEADER_3D__
+#define __HEADER_3D__
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <sstream>
+#include <fstream>
 // this file include basic I/O and basic data struct: string, vector
 using std::cout;
 using std::endl;
@@ -24,29 +25,16 @@ using std::vector;
 #include "Math\CMath.h"
 #include "Math\Matrix.h"
 #include "Math\Quaternion.h"
+#include "Math\Plane.h"
+#include "Math\Frustum.h"
 
 //Common
 #include "Common\Common.h"
 #include "Common\Timer.h"
 #include "Common\Log.h"
 #include "Common\Shader.h"
+#include "Common\Input.h"
 #include "Camera.h"
-
-
-// Resouce 
-#include "Resource\Texture.h"
-#include "Resource\ResourceLoader.h"
-
-
-// Mesh 
-#include "Mesh\Mesh.h"
-#include "Mesh\Quad.h"
-#include "Mesh\Cube.h"
-#include "Mesh\Axis.h"
-
-#include "World\BSPMesh.h"
-#include "World\Quake3BSP.h"
-#include "World\MapRenderer.h"
 
 
 
@@ -56,6 +44,36 @@ using std::vector;
 #include "Light\PointLight.h"
 #include "Light\Spotlight.h"
 
+
+// Resouce 
+#include "Resource\Texture.h"
+#include "Resource\ResourceLoader.h"
+
+#include "Scene\Interface.h"
+#include "Scene\SceneNode.h"
+#include "Scene\Scene.h"
+// Mesh 
+#include "Mesh\Mesh.h"
+#include "Mesh\Quad.h"
+#include "Mesh\Cube.h"
+#include "Mesh\Axis.h"
+
+#include "Mesh\SMDMesh.h"
+#include "Mesh\SMDModel.h"
+#include "Mesh\SMDAnimation.h"
+#include "Mesh\SMDRenderer.h"
+
+#include "Mesh\SkeletonNode.h"
+#include "Mesh\LTBMesh.h"
+#include "Mesh\LTBFile.h"
+#include "Mesh\LTBRender.h"
+
+#include "World\BSPMesh.h"
+#include "World\Quake3BSP.h"
+#include "World\MapRenderer.h"
+
+
+
 // renderer
 #include "Renderer\SkyBox.h"
 #include "Renderer\Font.h"
@@ -63,6 +81,14 @@ using std::vector;
 #include "Renderer\RenderTarget.h"
 #include "Renderer\MSSA.h"
 
+
+// World
+#include "World\HeightMap.h"
+#include "World\Terrain.h"
 // Windows
 #include "Windows.h"
+
+extern Font font;
+extern Input gInput;
+extern GameTimer gTimer;
 #endif

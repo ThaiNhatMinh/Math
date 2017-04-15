@@ -341,6 +341,166 @@ std::ostream&  operator<<(const Vector3& v ,std::ostream& os)
 }
 
 
+/*
+-
+-
+-		Vector3i part
+-
+-
+*/
+
+Vector3i::Vector3i()
+{
+
+}
+
+
+Vector3i::~Vector3i()
+{
+}
+
+
+void Vector3i::zero()
+{
+	x = y = z = 0;
+}
+
+bool Vector3i::operator==(const Vector3i& v) const
+{
+	return x == v.x && y == v.y && z == v.z;
+}
+
+bool Vector3i::operator!=(const Vector3i& v) const
+{
+	return !(*this == v);
+}
+
+bool Vector3i::operator>(const Vector3i& v) const
+{
+	return x>v.x && y>v.y && z>v.z;
+}
+
+bool Vector3i::operator>=(const Vector3i& v) const
+{
+	return x >= v.x && y >= v.y && z >= v.z;
+}
+
+bool Vector3i::operator<(const Vector3i& v) const
+{
+	return x<v.x && y<v.y && z<v.z;
+}
+
+bool Vector3i::operator<=(const Vector3i& v) const
+{
+	return x <= v.x && y <= v.y && z <= v.z;
+}
+
+Vector3i& Vector3i::operator=(const Vector3i& v)
+{
+	x = v.x;
+	y = v.y;
+	z = v.z;
+	return *this;
+}
+
+Vector3i Vector3i::operator+(const Vector3i& v) const
+{
+	return Vector3i(x + v.x, y + v.y, z + v.z);
+}
+
+Vector3i Vector3i::operator-(const Vector3i& v) const
+{
+	return Vector3i(x - v.x, y - v.y, z - v.z);
+}
+Vector3i Vector3i::operator-() const
+{
+	return Vector3i(-x, -y, -z);
+}
+Vector3i Vector3i::operator*(int Scalar) const
+{
+	return Vector3i(x*Scalar, y*Scalar, z*Scalar);
+}
+
+Vector3i Vector3i::operator/(int Scalar) const
+{
+	float oneOverScalar = 1.0f / Scalar;
+	return Vector3i(x*oneOverScalar, y*oneOverScalar, z*oneOverScalar);
+}
+
+Vector3i& Vector3i::operator+=(const Vector3i& v)
+{
+	x += v.x;
+	y += v.y;
+	z += v.z;
+	return *this;
+}
+
+Vector3i& Vector3i::operator-=(const Vector3i& v)
+{
+	x -= v.x;
+	y -= v.y;
+	z -= v.z;
+	return *this;
+}
+
+Vector3i& Vector3i::operator*=(int Scalar)
+{
+	x *= Scalar;
+	y *= Scalar;
+	z *= Scalar;
+	return *this;
+}
+
+Vector3i& Vector3i::operator/=(int Scalar)
+{
+	float oneOverScalar = 1.0f / Scalar;
+	x *= oneOverScalar;
+	y *= oneOverScalar;
+	z *= oneOverScalar;
+	return *this;
+}
+
+int & Vector3i::operator[](int index)
+{
+	// TODO:
+	return (&x)[index];
+}
+
+int Vector3i::operator[](int index) const
+{
+	return (&x)[index];
+}
+
+int Vector3i::Length() const
+{
+	return sqrtf(x*x + y*y + z*z);
+}
+
+int Vector3i::SquareLength() const
+{
+	return x*x + y*y + z*z;
+}
+
+
+int Vector3i::Dot(const Vector3& v) const
+{
+	int result = x*v.x + y*v.y + z*v.z;
+	return (result);
+}
+
+
+
+std::ostream&  operator<<(std::ostream& os, const Vector3i& v)
+{
+	os << '<' <<  v.x << ','<< v.y << ',' << v.z << '>';
+	return os;
+}
+
+std::ostream&  operator<<(const Vector3i& v, std::ostream& os)
+{
+	return os;
+}
+
 
 /*
 -

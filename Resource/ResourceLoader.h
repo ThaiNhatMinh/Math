@@ -1,7 +1,6 @@
 #pragma once
 #include "..\iostream.h"
 
-
 struct DtxHeader
 {
 	unsigned int iResType;
@@ -27,7 +26,10 @@ private:
 public:
 	Resources();
 	~Resources();
+	static void Init();
 	static Texture* LoadTexture(const char* filename);
+	static Texture* LoadCubeTex(const vector<string>& filelist);
+	static Texture* LoadTexMemory(const char* filename, unsigned char* data, int w, int h);
 	static Texture* LoadDTX(const char* filename);
 	static void Release();
 

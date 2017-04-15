@@ -1,18 +1,11 @@
-#include "Interface.h"
-#include "..\Math\Vector.h"
-#include "..\Math\Quaternion.h"
-#include "..\Math\Matrix.h"
-#include <iostream>
-#include <vector>
-#include <string>
+#include "..\iostream.h"
 typedef std::vector<ISceneNode*> SceneNodeList;
 
 class SceneNode: public virtual ISceneNode
 {
 private:
 	std::string m_sName;
-	mat4		m_toWorld,m_fromWorld;
-	float		m_fRadius;
+	mat4		m_Model,m_InvModel;
 	Vector3		m_vPosition;
 	Quaternion	m_Orient;
 	uint16_t	m_iID;
@@ -24,22 +17,22 @@ protected:
 public:
 	
 	
-	SceneNode(std::string name,const mat4* to);
+	SceneNode(std::string name);
 	virtual~SceneNode();
 	virtual void SetTransform(const mat4* toWorld, const mat4* fromWorld=NULL);
-	virtual void OnUpdate( float deltaTime);
-	virtual void OnRestore();
-	virtual void PreRender() ;
-	virtual bool IsVisible() ;
-	virtual void Render() =0;
-	virtual void RenderChildren() {};
-	virtual void PostRender() ;
+	virtual void OnUpdate(Scene*, float deltaTime);
+	virtual void OnRestore(Scene*);
+	//virtual void PreRender(Scene*) ;
+	virtual bool IsVisible(Scene*) { return true; };
+	//virtual void Render(Scene*) =0;
+	virtual void RenderChildren(Scene*);
+	//virtual void PostRender(Scene*) ;
 
+	virtual int GetID() { return m_iID; };
 	virtual bool AddChild(ISceneNode* kid) ;
 	virtual bool RemoveChild(int id);
 	Vector3 GetPosition()const{return m_vPosition;};
 	void SetPosition(const Vector3& pos){m_vPosition = pos;};
-	void SetRadius(float radius){m_fRadius = radius;};
-
+	string GetName() { return m_sName; }
 	
 };

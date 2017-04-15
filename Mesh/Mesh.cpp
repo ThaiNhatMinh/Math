@@ -3,6 +3,7 @@
 
 Mesh::Mesh()
 {
+	m_iVAO = m_iEBO = m_iVBO = 0;
 }
 
 
@@ -23,7 +24,7 @@ void Mesh::Finalize()
 	}
 
 	std::vector<float> data;
-	for (int i = 0; i < m_vPositions.size(); ++i)
+	for (size_t i = 0; i < m_vPositions.size(); ++i)
 	{
 		data.push_back(m_vPositions[i].x);
 		data.push_back(m_vPositions[i].y);

@@ -4,10 +4,11 @@
 in vec3 position;	// location = 0
 in vec3 normal;		// location = 1
 in vec2 uv;			// location = 2, neu normal khong duoc dung toi no se bi xoa va location cua uv se la 1
-
+in vec2 lightuv;	//
 
 
 out vec2 TexCoord;
+out vec2 lightCoord;
 out vec3 Normal;
 out vec3 vFragPos;
 
@@ -22,6 +23,7 @@ void main()
 	gl_Position = Proj*View*Model*vec4(position, 1.0);
 	Normal = vec3(Model * vec4(normal,1.0f));
 	TexCoord = uv;
+	lightCoord = lightuv;
 	vFragPos  = vec3(Model * vec4(position, 1.0f));
 	
 }

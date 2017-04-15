@@ -1,4 +1,5 @@
 #include "iostream.h"
+#include "Camera.h"
 
 
 
@@ -53,6 +54,16 @@ void Camera::OnKeyboard(int key,float deltaTIme)
 	if (key == GLFW_KEY_D) m_Position += m_Right*m_Speed*deltaTIme;
 	if (key == GLFW_KEY_A) m_Position -= m_Right*m_Speed*deltaTIme;
 
+}
+
+void Camera::Update(float deltaTIme)
+{
+	// Camera controls
+	if (gInput.OnKey(GLFW_KEY_W)) m_Position += m_Front*m_Speed*deltaTIme;
+	if (gInput.OnKey(GLFW_KEY_S)) m_Position -= m_Front*m_Speed*deltaTIme;
+	if (gInput.OnKey(GLFW_KEY_D)) m_Position += m_Right*m_Speed*deltaTIme;
+	if (gInput.OnKey(GLFW_KEY_A)) m_Position -= m_Right*m_Speed*deltaTIme;
+	//cout << m_Position << endl;
 }
 
 void Camera::OnMouse(float dx, float dy)

@@ -9,6 +9,8 @@ public:
 	float x,y;
 	inline Vector2() {};
 	inline Vector2(float _x, float _y):x(_x), y(_y){}
+	inline Vector2(int _x, int _y) { x = (float)_x; y = (float)_y; };
+	inline Vector2(unsigned int _x, unsigned int _y) { x = (float)_x; y = (float)_y; };
 	inline Vector2(const Vector2& v): x(v.x), y(v.y){}
 	inline ~Vector2() {};
 	void zero();
@@ -94,6 +96,49 @@ public:
 };
 
 
+class Vector3i
+{
+public:
+	int x, y, z;
+	Vector3i();
+	Vector3i(int _x, int _y, int _z) :x(_x), y(_y), z(_z) {}
+	Vector3i(int val) :x(val), y(val), z(val) {};
+	Vector3i(const Vector3i& v) : x(v.x), y(v.y), z(v.z) {}
+	~Vector3i();
+	void zero();
+	void set(int _x, int _y, int _z) { x = _x; y = _y; z = _z; }
+	// Comparison Operators
+	bool operator ==(const Vector3i& v) const;
+	bool operator !=(const Vector3i& v) const;
+	bool operator> (const Vector3i& v) const;
+	bool operator >=(const Vector3i& v) const;
+	bool operator< (const Vector3i& v) const;
+	bool operator <=(const Vector3i& v) const;
+
+	// Algebraic Operations
+	Vector3i& operator=(const Vector3i& v);
+	Vector3i operator+(const Vector3i& v) const;
+	Vector3i operator-(const Vector3i& v) const;
+	Vector3i operator-() const;
+	Vector3i operator*(int Scalar) const;
+	Vector3i operator/(int Scalar) const;
+	Vector3i& operator+=(const Vector3i& v);
+	Vector3i& operator-=(const Vector3i& v);
+	Vector3i& operator*=(int Scalar);
+	Vector3i& operator/=(int Scalar);
+	int& operator[](int index);
+	int operator[](int index)const;
+	// Geometric Operations
+	int Length() const;
+	int SquareLength() const;
+	int Dot(const Vector3& v) const;
+
+	// Debug Operations
+	friend std::ostream& operator<<(std::ostream& out, const Vector3i& source);
+	friend std::ostream& operator<<(const Vector3i& source, std::ostream& out);
+
+
+};
 // This class finish but some operator doesn't really good. 
 #pragma once
 class Vector4
@@ -141,6 +186,7 @@ public:
 };
 
 typedef Vector3 Vec3;
+typedef Vector3i vec3i;
 typedef Vector2 Vec2;
 typedef Vector4 Vec4;
 

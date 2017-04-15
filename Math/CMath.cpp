@@ -151,11 +151,31 @@ float Math::ASin(float fValue)
 
 }
 
- Matrix4 Math::Perspective(float FOV, float a, float Znear, float Zfar)
+ Matrix4 Math::Perspective(float FOV, float a, float znear, float zfar)
  {
 	 float d = 1.0f/tanf(FOV/180.0f*PI*0.5f);
 
-	 return Matrix4(	d/a,	0,	0, 0,
+	 float xymax = znear * tanf(FOV / 180.0f*PI*0.5f);
+	 float ymin = -xymax;
+	 float xmin = -xymax;
+
+	 float width = xymax - xmin;
+	 float height = xymax - ymin;
+
+	 float depth = zfar - znear;
+	 float q = -(zfar + znear) / depth;
+	 float qn = -2 * (zfar * znear) / depth;
+
+	 float w = 2 * znear / width;
+	 w = w / a;
+	 float h = 2 * znear / height;
+
+	 return Matrix4(w, 0, 0, 0,
+					0, h, 0, 0,
+					0, 0, q, -1,
+					0, 0, qn, 0.0f);
+
+	 /*return Matrix4(	d/a,	0,	0, 0,
 						0,		d,	0, 0,
 						0,		0,	(Zfar+Znear)/(Znear-Zfar),2.0f*Znear*Zfar/(Znear-Zfar),
 						0,		0,	-1.0f,	0.0f);

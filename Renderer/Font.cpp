@@ -26,12 +26,12 @@ Font::~Font()
 {
 }
 
-bool Font::Init(int w,int h)
+bool Font::Init(float w,float h)
 {
 	m_Proj = Math::Ortho(w, h);
 	InitBuffer();
 	m_Shader.Load("Game\\Shader\\Text2D.vs", "Game\\Shader\\Text2D.frag");
-
+	m_Shader.LinkShader();
 	FT_Library lib;
 	if (FT_Init_FreeType(&lib))
 	{

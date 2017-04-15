@@ -56,7 +56,7 @@ public:
     std::vector<unsigned short> leafFaces;
     std::vector<Edge> edges;
     std::vector<int> surfEdges;
-    std::vector<Plane> planes;
+    std::vector<BSPPlane> planes;
     
     std::vector<TexInfo> texInfo;
     std::vector<TexData> texData;

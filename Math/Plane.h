@@ -1,12 +1,11 @@
+
+#pragma once
+
 #include "Vector.h"
 #include "CMath.h"
-
 // ax + by + cz = d
 // Normal is (a,b,c)
 // Offset is d
-
-// This code doesn't check about accuracy.
-// Need to check before use it.
 class Plane
 {
 public:
@@ -24,7 +23,8 @@ public:
 		return (Math::Dot(m_Normal, v) == m_Offset);
 	};
 	float inline DistanceToPlane(const Vec3& v)const {
-		return Math::Dot(m_Normal, v) - m_Offset;
+		float result = Math::Dot(m_Normal, v) - m_Offset;
+		return result;
 	}
 	//bool IntersectionLine(const Vec3& v1, const Vec3& v2) const;
 

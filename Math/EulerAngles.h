@@ -16,10 +16,9 @@ public:
 	float roll;		// Y axis heading
 	EulerAngle();
 	EulerAngle(float pitch, float yaw, float roll);
-	EulerAngle(const Vector3& V);
-	void Identity();
-	void Set(float pitch, float yaw, float roll);
-	EulerAngle& operator=(const EulerAngle& EA);
+	EulerAngle(const Vector3& V) {};
+	void Identity() {};
+	void Set(float pitch, float yaw, float roll) {};
 	Matrix4 ToMatrix();
 	Quaternion ToQuaternion();
 	~EulerAngle();

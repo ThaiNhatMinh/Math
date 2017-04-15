@@ -5,6 +5,7 @@ struct Material{
 	//vec3 specular;
 	float shininess;
 };
+
 struct DirLight // direction light
 {
 	vec3 direction;

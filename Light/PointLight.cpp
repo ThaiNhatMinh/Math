@@ -6,10 +6,10 @@ PointLight::~PointLight()
 {
 }
 
-void PointLight::SendData(Shader * pShader, int slot)
+void PointLight::SendData(Shader * pShader)
 {
 	char buffer[4];
-	itoa(slot, buffer, 10);
+	_itoa(slot, buffer, 10);
 	string s = buffer;
 	pShader->SetUniform(("pointlight[" + s + "].position").c_str(), Position);
 	pShader->SetUniform(("pointlight[" + s + "].ambient").c_str(), Ambient);

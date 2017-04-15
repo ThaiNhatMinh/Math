@@ -26,7 +26,7 @@ private:
 public:
 	Font();
 	~Font();
-	bool Init(int w,int h);
+	bool Init(float w,float h);
 	void Draw( string text, float x, float y, float scale = 1.0f, Vec3 color = Vec3(1.0f));
 };
 

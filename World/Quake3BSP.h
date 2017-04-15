@@ -94,26 +94,79 @@ public:
 	// This destroys the level data
 	void Destroy();
 
-public:
+	int FindLeaf(const Vec3& pos);
+	int IsClusterVisible(int current, int test);
+
+	// This traces a single ray and checks collision with brushes
+	Vec3 TraceRay(Vec3 vStart, Vec3 vEnd);
+
+	// This traces a sphere along a ray to check for collision with the brushes
+	Vec3 TraceSphere(Vec3 vStart, Vec3 vEnd, float radius);
+	// This traces a axis-aligned bounding box (AABB) along a ray to check for collision
+	Vec3 TraceBox(Vec3 vStart, Vec3 vEnd, Vec3 vMin, Vec3 vMax);
+
+	// This tells us if we have just collided
+	bool Collided() { return m_bCollided; }
+
+private:
 
 	// This attaches the correct extension to the file name, if found
 	void FindTextureExtension(char *strFileName);
+	Vec3 Trace(Vec3 vStart, Vec3 vEnd);
 
+	// This recursively checks all the nodes until we find leafs that store the brushes
+	void CheckNode(int nodeIndex, float startRatio, float endRatio, Vec3 vStart, Vec3 vEnd);
+
+	// This checks our movement vector against the brush and it's sides
+	void CheckBrush(tBSPBrush *pBrush, Vec3 vStart, Vec3 vEnd);
+public:
 	// This renders a single face to the screen
 	// This function also move to MapRenderer
 	// void RenderFace(int faceIndex);
+	int m_numOfBrushes;			// The number of brushes in our world
+	int m_numOfBrushSides;		// The number of brush sides in our world
+	int m_numOfLeafBrushes;		// The number of leaf brushes
 
+	int m_traceType;			// This stores if we are checking a ray, sphere or a box
+	float m_traceRatio;			// This stores the ratio from our start pos to the intersection pt.
+	float m_traceRadius;		// This stores the sphere's radius for a collision offset
+
+	bool m_bCollided;			// This tells if we just collided or not
 	int  m_numOfVerts;			// The number of verts in the model
 	int  m_numOfFaces;			// The number of faces in the model
 	int  m_numOfIndices;		// The number of indices for the model
 	int  m_numOfTextures;		// The number of texture maps
+	int  m_numOfLightmaps;		// The number of light maps
+
+	int m_numOfNodes;			// The number of nodes in the level
+	int m_numOfLeafs;			// The leaf count in the level
+	int m_numOfLeafFaces;		// The number of leaf faces in the level
+	int m_numOfPlanes;			// The number of planes in the level
+
+	Vec3 m_vTraceMins;		// This stores the minimum values of the AABB (bottom corner)
+	Vec3 m_vTraceMaxs;		// This stores the maximum values of the AABB (top corner)
+	Vec3 m_vExtents;		// This stores the largest length of the box
+
+	Vec3 m_vCollisionNormal;	// This stores the normal of the plane we collided with
+
+	tBSPNode    *m_pNodes;		// The nodes in the bsp tree
+	tBSPLeaf    *m_pLeafs;		// The leafs in the bsp tree
+	tBSPPlane   *m_pPlanes;		// The planes stored in the bsp tree
+	int         *m_pLeafFaces;	// The leaf's faces in the bsp tree
+	tBSPVisData  m_clusters;	// The clusters in the bsp tree for space partitioning
 
 	int			*m_pIndices;	// The object's indices for rendering
 	tBSPVertex  *m_pVerts;		// The object's vertices
 	tBSPFace	*m_pFaces;		// The faces information of the object
 								// The texture and lightmap array for the level
-	Texture* m_textures[20];
 
+	tBSPTexture   *m_pTextures;		// This stores our texture info for each brush
+	tBSPBrush	  *m_pBrushes;		// This is our brushes
+	tBSPBrushSide *m_pBrushSides;	// This holds the brush sides
+	int			  *m_pLeafBrushes;  // The indices into the brush array
+
+	Texture* m_textures[20];
+	Texture* m_lightMap[20];
 	CBitset m_FacesDrawn;		// The bitset for the faces that have/haven't been drawn
 };
 

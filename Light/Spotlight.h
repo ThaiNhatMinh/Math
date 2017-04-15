@@ -13,6 +13,7 @@ public:
 	float fQuadratic;
 	float cutOff;
 	float OutercutOff;
+	int slot;
 public:
 	Spotlight(Vec3 pos, float cutoff,float outercutoff, PointLight point);
 	~Spotlight();

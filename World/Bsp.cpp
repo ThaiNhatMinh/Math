@@ -193,7 +193,7 @@ void BSP::LoadLightMaps(unsigned char* pLightMapData)
     int nLoadedLightmaps = 0;
     //int nErrors = 0;
 
-    for (int i = 0; i < faces.size(); i++)
+    for (size_t i = 0; i < faces.size(); i++)
     {
         if (faces[i].styles[0] == 0 && (signed)faces[i].lightOfs >= -1)
         {
@@ -442,7 +442,7 @@ template<typename T> void BSP::ReadLump(std::ifstream& map, std::vector<T>& elem
 
 	map.seekg(header.lumps[index].offset);
 
-	for (int x = 0; x < header.lumps[index].length / sizeof(T); x++)
+	for (size_t x = 0; x < header.lumps[index].length / sizeof(T); x++)
 	{
 		T element;
 		map.read((char*)&element, sizeof(T));
@@ -475,7 +475,7 @@ int BSP::WalkBSPTree(Vec3 pos, int node)
  * There must be something wrong. HELP ME. */
 void BSP::LoadProps() 
 {
-	for (int i = 0; i < propInfo.size(); i++)
+	for (size_t i = 0; i < propInfo.size(); i++)
 	{
 		propInfo[i].startIndex = indices.size() + 1;
 		
@@ -501,7 +501,7 @@ void BSP::LoadProps()
 
 void BSP::RenderProps(int uniformModel, int uniformColor)
 {
-	for (int i = 0; i < propInfo.size(); i++)
+	for (size_t i = 0; i < propInfo.size(); i++)
 	{
 		PropInfo info = propInfo[i];		
 		std::map<const char*, PropInfo>::iterator it = props.find(info.name);
@@ -752,7 +752,7 @@ Vec3 BSP::GetCoordsFromString(const char* str)
 		while(*str != ' ' && *str)
 			str++;
 		std::string spos(begin, str);
-		pos[i] = atof(spos.c_str());
+		pos[i] = (float)atof(spos.c_str());
 	}
 	return pos;
 }

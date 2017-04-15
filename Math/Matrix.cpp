@@ -448,6 +448,18 @@ void Matrix4::Translate(const Vector3& v)
 	mV[14]= v.z;
 }
 
+Vec3 Matrix4::GetTranslate2() const
+{
+	return Vector3(mV[3], mV[7], mV[11]);
+}
+
+void Matrix4::Translate2(const Vector3 & v)
+{
+	mV[3] = v.x;
+	mV[7] = v.y;
+	mV[11] = v.z;
+}
+
 Vec3 Matrix4::GetTranslate()const
 {
 	return Vector3(mV[12], mV[13], mV[14]);
