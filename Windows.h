@@ -1,6 +1,7 @@
 #pragma once
 #include "iostream.h"
 extern void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+extern void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 extern void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 extern void scroll_callback(GLFWwindow*, double, double);
 

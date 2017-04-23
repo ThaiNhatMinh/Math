@@ -2,6 +2,7 @@
 #include "Matrix.h"
 #include "Vector.h"
 #include "Quaternion.h"
+#include "AABB.h"
 #include <math.h>
 #include <assert.h>
 #include <iostream>
@@ -106,6 +107,12 @@ float Math::ASin(float fValue)
 	return Radian * RAD_TO_DEG;
 }
 
+ float Math::DistanceSquare(const Vec3 v1, const Vec3 & v2)
+ {
+	 float r = (v1.x - v2.x)*(v1.x - v2.x) + (v1.y - v2.y)*(v1.y - v2.y);
+	 return r;
+ }
+
  float Math::ToRadian(float Angle)
 {
 	return Angle * DEG_TO_RAD;
@@ -205,6 +212,7 @@ void Math::GetBasicVector(const Matrix4& M, Vec3& xaxis, Vec3& yaxis, Vec3& zaxi
 	yaxis.set( M.mV[1], M.mV[5], M.mV[9]);
 	zaxis.set( M.mV[2], M.mV[6], M.mV[10]);
 }
+
  Quaternion Math::Pow(const Quaternion& Q, float exponent)
 {
 	if(FAbs(Q.w)>0.9999f) return Q;

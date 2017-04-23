@@ -4,7 +4,7 @@
 
 struct AnimKeyFrame
 {
-	unsigned int	m_Time;
+	unsigned int		m_Time;
 	// A string of information about this key..
 	std::string			m_pString;
 };
@@ -26,7 +26,6 @@ struct NodeAnim
 
 struct LTAJoint
 {
-	int parent;
 	mat4 LocalTransform;
 };
 typedef std::vector<LTAJoint> JointList;
@@ -80,25 +79,53 @@ struct Animation
 	std::vector<AnimNode> AnimNodeLists;
 };
 
-class SkeAnim
+//class PlayerMotion;
+struct AnimControl
 {
-public:
+	float m_fTime;
+	GLuint m_iCurrentAnim;
+	GLuint m_iCurrentFrame;
+	bool m_bActive;
+};
+class BaseAnim
+{
+	friend class PlayerMotion;
+	friend class LTBFile;
+private:
 	vector<Animation*> m_pAnimList;
-	unsigned int m_CompressionType;
-	unsigned int m_InterpolationMS;
 	float m_fTime;
 	float m_fSpeed;
 	GLuint m_iCurrentFrame;
 	GLuint m_iCurrentAnim;
+	bool m_bCanRelease;
+
+	/*	m_bOnAnimation value
+	0 - ilde play animation	== no other animation so play idle
+	1 - on playing animation
+	2 - on blending animation
+
+	*/
+	GLuint m_bOnAnimation;
+
+	// Time blend betwen 2 animation
+	float m_fBlendTime;
+	// FrameData for current frame. use for blending
+	vector<FrameData> m_CurrentFrames;
+
+	// this animation not repeat
+	AnimControl m_More;
+	vector<WeightBlend> m_WS;
 
 protected:
-	void ReadData(FILE* pFile, AnimNode& node,const vector<AnimKeyFrame>&);
-	FrameData InterpolateFrame(unsigned int& currentFrame, const AnimNode& Anim,const vector<AnimKeyFrame>&);
+	static FrameData InterpolateFrame(unsigned int& currentFrame, const AnimNode& Anim, const vector<AnimKeyFrame>&);
 public:
-	SkeAnim();
-	~SkeAnim();
-	void SetAnim(int i) { m_iCurrentAnim = i; };
+	BaseAnim();
+	~BaseAnim();
+	void SetAnim(int a);
 	void NextAnim() { m_iCurrentAnim++; if (m_iCurrentAnim == m_pAnimList.size()) m_iCurrentAnim = 0; };
-	bool LoadAnimation(FILE* pFile,const vector<SkeNode*>& pNodeList);
 	void Update(float dt, JointList& skeleton);
+	vector<Animation*>& Get() { return m_pAnimList; };
+	vector<WeightBlend>& GetWS() { return m_WS; };
+	void SetBlendTime(float a) { m_fBlendTime = a; }
+	void AddAnimation(GLuint a);
 };

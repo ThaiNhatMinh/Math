@@ -6,7 +6,7 @@
 class Terrain: public SceneNode
 {
 private:
-	Shader		m_Shader;
+	Shader*		m_pShader;
 	GLuint		m_ModelUniform;
 	GLuint		m_ViewUniform;
 	GLuint		m_ProjUniform;
@@ -41,6 +41,6 @@ public:
 	void	PreRender(Scene*);
 	void	Render(Scene*);
 	void	PostRender(Scene*);
-	Shader	GetShader() {return m_Shader;};
+	Shader*	GetShader() {return m_pShader;};
 	float	HetHeight(int i, int j);
 };

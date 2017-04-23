@@ -30,8 +30,8 @@ bool Font::Init(float w,float h)
 {
 	m_Proj = Math::Ortho(w, h);
 	InitBuffer();
-	m_Shader.Load("Game\\Shader\\Text2D.vs", "Game\\Shader\\Text2D.frag");
-	m_Shader.LinkShader();
+	m_pShader = ShaderManager::GetLoad("Text","Game\\Shader\\Text2D.vs", "Game\\Shader\\Text2D.frag");
+	m_pShader->LinkShader();
 	FT_Library lib;
 	if (FT_Init_FreeType(&lib))
 	{
@@ -90,9 +90,9 @@ void Font::Draw( string text, float x, float y, float scale, Vec3 color)
 {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	m_Shader.Use();
-	m_Shader.SetUniform("InColor", color.x, color.y, color.z);
-	m_Shader.SetUniformMatrix("Proj", m_Proj.ToFloatPtr());
+	m_pShader->Use();
+	m_pShader->SetUniform("InColor", color.x, color.y, color.z);
+	m_pShader->SetUniformMatrix("Proj", m_Proj.ToFloatPtr());
 
 	glBindVertexArray(m_iVAO);
 	
@@ -119,7 +119,7 @@ void Font::Draw( string text, float x, float y, float scale, Vec3 color)
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, ch.iTextureID);
-		m_Shader.SetUniform("TexFont", 0);
+		m_pShader->SetUniform("TexFont", 0);
 		// Update content of VBO memory
 		glBindBuffer(GL_ARRAY_BUFFER, m_iVBO);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);

@@ -1,12 +1,14 @@
 #ifndef __CMATH__
 #define __CMATH__
 #include "Vector.h"
+
+class AABB;
 class Matrix4;
 class Quaternion;
 
 class Math
 {
-	
+	friend class AABB;
 public:
 	static const float EPSILON;
 	static const float MAX_REAL;
@@ -36,7 +38,7 @@ public:
 	static void SinCos(float& sin, float& cos, float theta);
 	static float ToRadian(float Angle);
 	static float ToDegree(float Radian);
-
+	static float DistanceSquare(const Vec3 v1, const Vec3& v2);
 	// Vector Operators
 	static Vector3 Normalize(const Vector3& v);
 	static Vector3 Cross(const Vector3& a, const Vector3& b);
@@ -53,6 +55,7 @@ public:
 	static void Translate(const Matrix4& M, float x, float y, float z);
 	static void GetBasicVector(const Matrix4& M, Vec3& xaxis, Vec3& yaxis, Vec3& zaxis);
 
+	//static bool Intersect(const AABB& a, const AABB& b);
 };
 
 #endif

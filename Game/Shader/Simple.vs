@@ -7,10 +7,9 @@ in vec2 uv;			// location = 2, neu normal khong duoc dung toi no se bi xoa va lo
 
 
 
-out vec2 UVs;
-out vec3 vNormals;
+out vec2 vUV;
+out vec3 vNormal;
 out vec3 vFragPos;
-out vec3 vPosition;
 
 uniform mat4 Model;
 uniform mat4 View;
@@ -21,8 +20,8 @@ void main()
 	
 
 	gl_Position = Proj*View*Model*vec4(position, 1.0);
-	vNormals = normal;
-	UVs = uv;
+	vNormal = mat3(Model)* normal;
+	vUV = uv;
 	vFragPos  = vec3(Model * vec4(position, 1.0f));
 	
 }

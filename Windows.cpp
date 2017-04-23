@@ -30,6 +30,7 @@ Windows::Windows(string title,int W,int H)
 
 Windows::~Windows()
 {
+	glfwDestroyWindow(m_pWindow);
 	glfwTerminate();
 }
 
@@ -44,6 +45,7 @@ bool Windows::InitWindow()
 	}
 
 	glfwMakeContextCurrent(window);
+	//glfwSwapInterval(1);
 	glfwSetCursorPos(window, m_iWidth / 2, m_iHeight / 2);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glewExperimental = GL_TRUE;
@@ -53,7 +55,7 @@ bool Windows::InitWindow()
 	// Define the viewport dimensions
 	glViewport(0, 0, m_iWidth, m_iHeight);
 	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
+	glDepthFunc(GL_LESS);
 
 	glFrontFace(GL_CW);
 	glCullFace(GL_BACK);
@@ -61,6 +63,7 @@ bool Windows::InitWindow()
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
 	m_pWindow = window;
 	
 	return true;

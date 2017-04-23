@@ -9,7 +9,7 @@ class Quaternion
 {
 public: 
 	//Basic value
-	float x, y, z, w;
+	float w,x, y, z;
 
 public:
 	Quaternion();
@@ -33,8 +33,8 @@ public:
 	Quaternion		operator*(const Quaternion& Q) const;
 	Vector3			operator*(const Vector3& v) const;
 	Quaternion&		operator*=(const Quaternion& Q);
-	float			operator[]( int index ) const{	assert( ( index >= 0 ) && ( index < 4 ) );	return ( &x )[ index ];	};
-	float &			operator[]( int index ){		assert( ( index >= 0 ) && ( index < 4 ) );	return ( &x )[ index ];	};
+	float			operator[]( int index ) const{	assert( ( index >= 0 ) && ( index < 4 ) );	return ( &w )[ index ];	};
+	float &			operator[]( int index ){		assert( ( index >= 0 ) && ( index < 4 ) );	return ( &w )[ index ];	};
 
 	// Debug Operations
 	friend std::ostream& operator<<(std::ostream& out, const Quaternion& source);

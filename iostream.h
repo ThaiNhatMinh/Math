@@ -1,17 +1,19 @@
 #ifndef __HEADER_3D__
 #define __HEADER_3D__
 
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <map>
 // this file include basic I/O and basic data struct: string, vector
 using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
-
+using std::map;
 
 // OpenGL Include
 // GLEW
@@ -22,20 +24,23 @@ using std::vector;
 
 // Math
 #include "Math\Vector.h"
-#include "Math\CMath.h"
 #include "Math\Matrix.h"
 #include "Math\Quaternion.h"
 #include "Math\Plane.h"
 #include "Math\Frustum.h"
+#include "Math\AABB.h"
+#include "Math\Sphere.h"
 
+#include "Math\CMath.h"
 //Common
 #include "Common\Common.h"
 #include "Common\Timer.h"
 #include "Common\Log.h"
 #include "Common\Shader.h"
+#include "Resource\ShaderManager.h"
 #include "Common\Input.h"
 #include "Camera.h"
-
+#include "Scene\TPSCamera.h"
 
 
 // Light
@@ -63,10 +68,14 @@ using std::vector;
 #include "Mesh\SMDAnimation.h"
 #include "Mesh\SMDRenderer.h"
 
-#include "Mesh\SkeletonNode.h"
 #include "Mesh\LTBMesh.h"
 #include "Mesh\LTBFile.h"
-#include "Mesh\LTBRender.h"
+#include "Mesh\SkeletonNode.h"
+#include "Scene\PlayerMotion.h"
+#include "Scene\SocketItem.h"
+#include "Scene\ModelRender.h"
+#include "Mesh\CharPlayer.h"
+#include "Mesh\Monster.h"
 
 #include "World\BSPMesh.h"
 #include "World\Quake3BSP.h"
@@ -83,7 +92,7 @@ using std::vector;
 
 
 // World
-#include "World\HeightMap.h"
+//#include "World\HeightMap.h"
 #include "World\Terrain.h"
 // Windows
 #include "Windows.h"

@@ -179,7 +179,7 @@ void BSP::AdjustTextureToPowerOfTwo(Image* pImg)
     // Scale image
     unsigned char* pNewData = (unsigned char*)malloc(nPOT * nPOT * pImg->nChannels * sizeof(unsigned char));
 
-    gluScaleImage(pImg->nChannels == 4 ? GL_RGBA : GL_RGB, pImg->nWidth, pImg->nHeight, GL_UNSIGNED_BYTE, pImg->pData, nPOT, nPOT, GL_UNSIGNED_BYTE, pNewData);
+    //gluScaleImage(pImg->nChannels == 4 ? GL_RGBA : GL_RGB, pImg->nWidth, pImg->nHeight, GL_UNSIGNED_BYTE, pImg->pData, nPOT, nPOT, GL_UNSIGNED_BYTE, pNewData);
 
     free(pImg->pData);
     pImg->nWidth = nPOT;

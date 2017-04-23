@@ -2,6 +2,7 @@
 #include "..\iostream.h"
 
 
+class PlayerMotion;
 
 class Scene
 {
@@ -13,6 +14,7 @@ private:
 	vector<PointLight> m_PointLights;
 	vector<Spotlight> m_SpotLights;
 	
+	PlayerMotion* m_pMotion;
 public:
 
 	Scene();
@@ -31,4 +33,6 @@ public:
 	vector<PointLight>& GetPointLights(){ return m_PointLights; }
 	void AddSpotLight(const Spotlight& sl) { m_SpotLights.push_back(sl); }
 	vector<Spotlight>& GetSpotLights() { return m_SpotLights; }
+
+	PlayerMotion* GetMotion() { return m_pMotion; };
 };

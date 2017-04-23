@@ -12,8 +12,8 @@ SkyBox::~SkyBox()
 
 void SkyBox::Init()
 {
-	m_Shader.Load("Game\\Shader\\SkyBox.vs", "Game\\Shader\\SkyBox.frag");
-	m_Shader.LinkShader();
+	m_pShader = ShaderManager::GetLoad("SkyBox","Game\\Shader\\SkyBox.vs", "Game\\Shader\\SkyBox.frag");
+	m_pShader->LinkShader();
 
 	vector<string> filelist;
 	filelist.push_back("Game\\Texture\\grimnight\\grimmnight_ft.tga");
@@ -32,6 +32,7 @@ void SkyBox::OnUpdate(Scene *pScene, float dt)
 	m_fAngle += dt * 2.5f;
 	m_Ort.setRotateYAxis(m_fAngle);
 
+	// update children
 	SceneNode::OnUpdate(pScene, dt);
 }
 
@@ -43,10 +44,10 @@ void SkyBox::PreRender(Scene *pScene)
 	mat4 view = camera.GetViewMatrix();
 	view.Translate(0, 0, 0);
 	mat4 proj = frustum.GetProjMatrix();
-	m_Shader.Use();
-	m_Shader.SetUniformMatrix("Model", m_Ort.ToMatrix().ToFloatPtr());
-	m_Shader.SetUniformMatrix("View", view.ToFloatPtr());
-	m_Shader.SetUniformMatrix("Proj", proj.ToFloatPtr());
+	m_pShader->Use();
+	m_pShader->SetUniformMatrix("Model", m_Ort.ToMatrix().ToFloatPtr());
+	m_pShader->SetUniformMatrix("View", view.ToFloatPtr());
+	m_pShader->SetUniformMatrix("Proj", proj.ToFloatPtr());
 	
 	glDepthFunc(GL_LEQUAL);
 
@@ -54,7 +55,7 @@ void SkyBox::PreRender(Scene *pScene)
 
 void SkyBox::Render(Scene* pScene)
 {
-	m_Shader.SetUniform("Skybox", 0);
+	m_pShader->SetUniform("Skybox", 0);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, m_pCubeTex->iIndex);
 	

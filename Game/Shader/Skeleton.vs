@@ -59,10 +59,10 @@ void main()
 
 	vColor = vec3(uv.x);
 	gl_Position = Proj*View*Model*finalPos;
-	vNormal = finalNormal;  
+	vNormal =  mat3(Model)*finalNormal;  
 
 	vUV = uv;
-	vFragPos = vec3(Model)*finalNormal;
+	vFragPos = vec3(Model * finalPos);
 
 	
 }

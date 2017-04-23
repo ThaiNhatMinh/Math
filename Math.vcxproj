@@ -24,7 +24,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v110_xp</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug GLFW|Win32'" Label="Configuration">
@@ -38,7 +38,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -63,7 +63,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\TheChosenOne\Desktop\MD5ModelLoader\externals\boost_1_46_0;D:\Source Code\Simple OpenGL Image Library\src;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Code Collection\OpenGL\Math\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -82,27 +82,31 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug GLFW|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>iostream.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>iostream.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackCommitSize>2000000</StackCommitSize>
+      <HeapCommitSize>10000000</HeapCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>iostream.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>iostream.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,8 +114,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>lib;C:\Users\TheChosenOne\Desktop\MD5ModelLoader\externals\boost_1_46_0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libboost_filesystem-vc120-mt-1_62.lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackCommitSize>5000000</StackCommitSize>
+      <HeapCommitSize>5000000</HeapCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -122,22 +128,31 @@
     <ClCompile Include="Common\Shader.cpp" />
     <ClCompile Include="Common\Timer.cpp" />
     <ClCompile Include="GLFW_Main.cpp" />
+    <ClCompile Include="iostream.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug GLFW|Win32'">Create</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug GLFW|Win32'">iostream.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">iostream.h</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Light\DirectionLight.cpp" />
     <ClCompile Include="Light\PointLight.cpp" />
     <ClCompile Include="Light\Spotlight.cpp" />
+    <ClCompile Include="Math\AABB.cpp" />
     <ClCompile Include="Math\CMath.cpp" />
     <ClCompile Include="Math\EulerAngles.cpp" />
     <ClCompile Include="Math\Frustum.cpp" />
     <ClCompile Include="Math\Matrix.cpp" />
     <ClCompile Include="Math\Plane.cpp" />
     <ClCompile Include="Math\Quaternion.cpp" />
+    <ClCompile Include="Math\Sphere.cpp" />
     <ClCompile Include="Math\Vector.cpp" />
     <ClCompile Include="Mesh\Axis.cpp" />
     <ClCompile Include="Mesh\Cube.cpp" />
     <ClCompile Include="Mesh\LTBFile.cpp" />
     <ClCompile Include="Mesh\LTBMesh.cpp" />
-    <ClCompile Include="Mesh\LTBRender.cpp" />
+    <ClCompile Include="Mesh\CharPlayer.cpp" />
     <ClCompile Include="Mesh\Mesh.cpp" />
+    <ClCompile Include="Mesh\Monster.cpp" />
     <ClCompile Include="Mesh\Quad.cpp" />
     <ClCompile Include="Mesh\SkeletonNode.cpp" />
     <ClCompile Include="Mesh\SMDAnimation.cpp" />
@@ -151,9 +166,13 @@
     <ClCompile Include="Renderer\RenderTarget.cpp" />
     <ClCompile Include="Renderer\SkyBox.cpp" />
     <ClCompile Include="Resource\ResourceLoader.cpp" />
+    <ClCompile Include="Resource\ShaderManager.cpp" />
+    <ClCompile Include="Scene\ModelRender.cpp" />
+    <ClCompile Include="Scene\PlayerMotion.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\SceneNode.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Scene\SocketItem.cpp" />
+    <ClCompile Include="Scene\TPSCamera.cpp" />
     <ClCompile Include="StackAllocator.cpp" />
     <ClCompile Include="Test SMD.cpp" />
     <ClCompile Include="TestPlane.cpp" />
@@ -179,6 +198,7 @@
     <ClInclude Include="Light\ILight.h" />
     <ClInclude Include="Light\PointLight.h" />
     <ClInclude Include="Light\Spotlight.h" />
+    <ClInclude Include="Math\AABB.h" />
     <ClInclude Include="Math\CMath.h" />
     <ClInclude Include="Math\EulerAngles.h" />
     <ClInclude Include="Math\Frustum.h" />
@@ -186,14 +206,16 @@
     <ClInclude Include="Math\MatrixStack.h" />
     <ClInclude Include="Math\Plane.h" />
     <ClInclude Include="Math\Quaternion.h" />
+    <ClInclude Include="Math\Sphere.h" />
     <ClInclude Include="Math\Vector.h" />
     <ClInclude Include="Mesh\Axis.h" />
     <ClInclude Include="Mesh\Cube.h" />
     <ClInclude Include="Mesh\LTBDef.h" />
     <ClInclude Include="Mesh\LTBFile.h" />
     <ClInclude Include="Mesh\LTBMesh.h" />
-    <ClInclude Include="Mesh\LTBRender.h" />
+    <ClInclude Include="Mesh\CharPlayer.h" />
     <ClInclude Include="Mesh\Mesh.h" />
+    <ClInclude Include="Mesh\Monster.h" />
     <ClInclude Include="Mesh\Quad.h" />
     <ClInclude Include="Mesh\SkeletonNode.h" />
     <ClInclude Include="Mesh\SMDAnimation.h" />
@@ -208,10 +230,15 @@
     <ClInclude Include="Renderer\RenderTarget.h" />
     <ClInclude Include="Renderer\SkyBox.h" />
     <ClInclude Include="Resource\ResourceLoader.h" />
+    <ClInclude Include="Resource\ShaderManager.h" />
     <ClInclude Include="Resource\Texture.h" />
     <ClInclude Include="Scene\Interface.h" />
+    <ClInclude Include="Scene\ModelRender.h" />
+    <ClInclude Include="Scene\PlayerMotion.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneNode.h" />
+    <ClInclude Include="Scene\SocketItem.h" />
+    <ClInclude Include="Scene\TPSCamera.h" />
     <ClInclude Include="StackAllocator.h" />
     <ClInclude Include="Windows.h" />
     <ClInclude Include="World\Bsp.h" />

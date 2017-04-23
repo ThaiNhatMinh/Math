@@ -8,6 +8,7 @@ SceneNode::SceneNode(std::string name)
 	m_iCounterID++;
 	m_sName = name;
 	m_vPosition = Vec3(0, 0, 0);
+	m_Orient.setRotateYAxis(0);
 }
 
 inline SceneNode::~SceneNode()

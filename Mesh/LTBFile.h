@@ -2,9 +2,9 @@
 #include "..\iostream.h"
 #include "LTBDef.h"
 
-class LTBFile
+struct LTBProp
 {
-public:
+	uint32		m_iFileVersion;
 	uint32		m_nKeyFrames;		// Number of keyframes.
 	uint32		m_nParentAnims;		// Number of animations (that come from us).
 	uint32		m_nNodes;			// Number of nodes.
@@ -24,18 +24,45 @@ public:
 	uint32		m_nAnimDataPos;		// the position of the animation data size in the file
 	float		m_GlobalRadius;		// Global radius.. MUST enclose the whole model.
 	uint32		m_iNumEnabledOBBs;	// Number of enable OBB
-	
+};
 
-	vector<LTBMesh*> m_pMeshs;
-	//SkeletonNode* m_pSkeleton;
-	vector<SkeNode*> m_pNodeLists;
-	SkeAnim		m_Animation;
-protected:
-	bool LoadSkeleton(FILE* pFile, SkeNode* p);
+struct LTBSocket
+{
+	uint32 m_iNode;
+	char m_Name[100];
+	Vec3 m_Pos;
+	Quat m_Ort;
+	Vec3 m_Scale;
+};
+
+struct WeightBlend
+{
+	char Name[16];
+	float Blend[100];
+};
+class SkeNode;
+class AnimNode;
+class AnimKeyFrame;
+class Animation;
+class LTBFile
+{
 public:
-	LTBFile();
-	LTBFile(const char* filename);
-	~LTBFile();
-	bool Load(const char* filename);
-	void SetupMesh(Shader*);
+	static FILE* pFile;
+protected:
+	static bool LoadSkeleton(FILE * pFile, SkeNode* pParent, vector<SkeNode*>& nodeLists);
+	static void ReadData(FILE* pFile, AnimNode& node, const vector<AnimKeyFrame>&, unsigned int);
+public:
+	LTBFile() {};
+	~LTBFile() {};
+	static bool BeginLoad(const char* filename);
+	static LTBProp* LoadProp();
+	static vector<LTBMesh*>		LoadMesh();
+	static vector<SkeNode*>		LoadSkeleton();
+	static vector<WeightBlend>	LoadWS();
+	static vector<string>		LoadChildName();
+	static vector<Animation*>	LoadAnimation(const vector<SkeNode*>& skenode);
+	static vector<LTBSocket>	LoadSocket();
+	static void EndLoad() {
+		fclose(pFile);
+	};
 };

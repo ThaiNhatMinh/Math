@@ -5,7 +5,7 @@
 class Mesh
 {
 public:
-	unsigned int m_iVAO = 0;
+	unsigned int m_iVAO;
 	unsigned int m_iVBO;
 	unsigned int m_iEBO;
 	vector<Vec3> m_vPositions;

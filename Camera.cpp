@@ -46,7 +46,7 @@ Camera::Camera(const Vec3 & pos, const Vec3 & target, const Vec3 & up)
 Camera::~Camera()
 {
 }
-
+/*
 void Camera::OnKeyboard(int key,float deltaTIme)
 {
 	if (key == GLFW_KEY_W) m_Position +=  m_Front*m_Speed*deltaTIme;
@@ -55,7 +55,7 @@ void Camera::OnKeyboard(int key,float deltaTIme)
 	if (key == GLFW_KEY_A) m_Position -= m_Right*m_Speed*deltaTIme;
 
 }
-
+*/
 void Camera::Update(float deltaTIme)
 {
 	// Camera controls

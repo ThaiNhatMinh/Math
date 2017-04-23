@@ -7,7 +7,7 @@ public:
 	//GLuint	m_iCubeTexId;
 	Texture* m_pCubeTex;
 	Cube	m_Box;
-	Shader	m_Shader;
+	Shader*	m_pShader;
 	Quat	m_Ort;
 	float	m_fAngle;
 public:

@@ -5,10 +5,10 @@
 Quad::Quad()
 {
 	m_vPositions = {
-		{50.0f,  50.0f, 0.0f},  // Top Right
-		{100.0f, -50.0f, 0.0f},  // Bottom Right
-		{-50.0f, -50.0f, 0.0f },  // Bottom Left
-		{-50.0f,  50.0f, 0.0f}  // Top Left 
+		{1.0f,  1.0f, 0.0f},  // Top Right
+		{1.0f, -1.0f, 0.0f},  // Bottom Right
+		{-1.0f, -1.0f, 0.0f },  // Bottom Left
+		{-1.0f,  1.0f, 0.0f}  // Top Left 
 	};
 	m_vIndices ={  // Note that we start from 0!
 		0, 1, 3,  // First Triangle

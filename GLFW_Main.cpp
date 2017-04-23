@@ -5,6 +5,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void Do_Movement(float );
 
 Camera camera(Vec3(0,255,0), Vec3(0, 0, 0), Vec3(0, 1, 0));
+TPSCamera TPSCam;
 Windows gWindow("Learn", 800, 600);
 GameTimer gTimer;
 mat4 Projection;
@@ -22,31 +23,32 @@ int main()
 	Vec2 size = gWindow.GetWindowSize();
 	frustum.Init(45.0f, (float)size.x / (float)size.y, 1.0f, 5000.0f);
 	frustum.Init();
-	Shader simple("Game\\Shader\\Simple.vs", "Game\\Shader\\Simple.frag");
-	simple.LinkShader();
-	Shader SunShader("Game\\Shader\\Sun.vs", "Game\\Shader\\Sun.frag");
-	SunShader.LinkShader();
+	
+	//Shader simple("Game\\Shader\\Simple.vs", "Game\\Shader\\Simple.frag");
+	//simple.LinkShader();
+	//Shader SunShader("Game\\Shader\\Sun.vs", "Game\\Shader\\Sun.frag");
+	//SunShader.LinkShader();
+
 	Shader Screen("Game\\Shader\\Quad.vs", "Game\\Shader\\Quad.frag");
 	Screen.LinkShader();
-	
+	Quad quad;
+	/*
 	Texture* contaner = Resources::LoadTexture("Game\\Texture\\awesomeface.png");
 	Texture* contaner2 = Resources::LoadTexture("Game\\Texture\\container2.png");
 	Texture* contaner2_spec = Resources::LoadTexture("Game\\Texture\\container2_specular.png");
 	Texture* matrix_tex = Resources::LoadTexture("Game\\Texture\\matrix.jpg");
-	Quad quad(2,300);
+	
 	Cube Sun(0.5f);
 	Cube cube;
 	Axis AXIS(100);
 	mat4 View = Math::LookAt(Vec3(100, 100, 100), Vec3(0, 0, 0), Vec3(0, 1, 0));
-	
+	*/
 	//LTBRenderer* pLTB = new LTBRenderer();;
 	//pLTB->Init("Game\\Model\\NANO_TERMINATOR\\M-MOTION-TERMINATOR.LTB");
 	
-	LTBRenderer* pLTB2 = new LTBRenderer();;
-	pLTB2->Init("Game\\Model\\CHARACTER\\C707_BODY_BL.LTB");
-	pLTB2->SetAnimation(3);
 	
-	Projection = Math::Perspective(45.0f, (float)size.x / (float)size.y, 1.0f, 2000.0f);
+	
+	//Projection = Math::Perspective(45.0f, (float)size.x / (float)size.y, 1.0f, 2000.0f);
 	
 	
 	
@@ -67,9 +69,9 @@ int main()
 	//Quake.Init("Game\\maps\\Level.bsp");
 	
 	
-	//RenderTarget PostProcessing((int)size.x, (int)size.y);
-	//MSSA* mssa = new MSSA((int)size.x, (int)size.y, 4);
-	//mssa->SetDrawFBO(PostProcessing.FBO());
+	RenderTarget PostProcessing((int)size.x, (int)size.y);
+	MSSA* mssa = new MSSA((int)size.x, (int)size.y, 2);
+	mssa->SetDrawFBO(PostProcessing.FBO());
 	
 	SkyBox* pSky = new SkyBox;
 	
@@ -78,20 +80,39 @@ int main()
 
 
 	Scene* pScene = new Scene;
+	pScene->Init();
+
 	Terrain* pTerrain = new Terrain;
+	CharPlayer* pLTB2 = new CharPlayer();;
+	pLTB2->Init(pScene,"Game\\Model\\CHARACTER\\707\\C707_BODY_BL.LTB");
+	pLTB2->SetAnimation(66);
+	TPSCam.SetTarget(pLTB2);
+	CharPlayer* pLTB1 = new CharPlayer();;
+	pLTB1->Init(pScene, "Game\\Model\\CHARACTER\\WOMAN\\WOMAN_BODY_BL.LTB");
+	pLTB1->SetAnimation(66);
+	
+	Monster* pLTB3 = new Monster;
+	pLTB3->Init(pScene, "Game\\Model\\CHARACTER\\NANO_TERMINATOR\\M-MOTION-TERMINATOR.LTB");
+	pLTB3->SetAnimation(0);
 	pTerrain->Init("coastMountain513.raw", 1.5f, 0.0f);
+	pTerrain->AddChild(pLTB2);
+	pTerrain->AddChild(pLTB1);
+	pTerrain->AddChild(pLTB3);
 	pSky->AddChild(pTerrain);
 	pScene->SetRootScene(pSky);
 	camera.SetSpeed(300);
-	pScene->SetCamera(&camera);
+	pScene->SetCamera(&TPSCam);
 	pScene->SetFrustum(&frustum);
-	//pScene->AddPointLight(pointLight1);
-	//pScene->AddPointLight(pointLight3);
-	//pScene->AddPointLight(pointLight4);
+	pScene->AddPointLight(pointLight1);
+	pScene->AddPointLight(pointLight3);
+	pScene->AddPointLight(pointLight4);
 	//pScene->AddSpotLight(spotLight);
 	string text = "OpenGL 3.1";
 
-	
+	//pLTB2->SetPosition(Vec3(150, 100, 0));
+	//mtras.Translate();
+	pLTB1->SetPosition(Vec3(400, 100, 150));
+	pLTB3->SetPosition(Vec3(250, 100, 0));
 	gTimer.Reset();
 	// Game loop
 	while (!glfwWindowShouldClose(gWindow.Window()))
@@ -100,125 +121,21 @@ int main()
 		glfwPollEvents();
 		gTimer.Tick();
 
-		//if (gInput.Press(GLFW_KEY_N)) pLTB->NextAnim();
-		if (gInput.Press(GLFW_KEY_M)) pLTB2->NextAnim();
-
-		mat4 mtras;
-		mtras.Translate(200, 120, 0);
-		//pLTB->SetTransform(mtras);
-		//pLTB->Update(gTimer.GetDeltaTime());
-		pLTB2->Update(gTimer.GetDeltaTime());
+		
+		
 		pScene->Update(gTimer.GetDeltaTime());
-		//frustum.Update(camera);
-		//camera.Update(gTimer.GetDeltaTime());
+	
 		//PostProcessing.BeginFrame();
 		//mssa->BeginFrame();
-	//	mat4 Model;
-	//	mat4 View = camera.GetViewMatrix();
-	//	mat4 SS = View;
-	//	SS.Translate(0, 0, 0);
-		
-		// Render sky box
 
 		
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);
-		glDepthFunc(GL_LESS);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 	
 		pScene->RenderScene();
-		//glDepthFunc(GL_LESS);
-
-		
-		//glDisable(GL_CULL_FACE);
-		
-
-	
-		//glEnable(GL_CULL_FACE);
-		
-		/*
-		simple.Use();
-
-		simple.SetUniform("EyePos", camera.GetPosition());
-		simple.SetUniformMatrix("View", View.ToFloatPtr());
-		simple.SetUniformMatrix("Proj", Projection.ToFloatPtr());
-		simple.SetUniform("material.shininess", 128.0f);
-		spotLight.Position = camera.GetPosition();
-		spotLight.Direction = camera.GetFront();
-
-		spotLight.SendData(&simple);
-		dirLight.SendData(&simple);
-		pointLight1.SendData(&simple, 0);
-		pointLight2.SendData(&simple, 1);
-
-
-
-		contaner2->Bind(0);
-		simple.SetUniform("diffuseMap", 0);
-		contaner2_spec->Bind(1);
-		simple.SetUniform("specularMap", 1);
-
-		
-		glBindVertexArray(cube.m_iVAO);
-		mat4 Model;
-		for (int i = -5; i < 5; i++)
-		{
-			Model.Translate(0.0, 0.0, i * 5.0f + 10.0f);
-			//if (!frustum.Inside(Vec3(0, 0, i * 5.0f + 10.0f))) continue;
-			simple.SetUniformMatrix("Model", Model.ToFloatPtr());
-			glDrawArrays(cube.Topology, 0, cube.m_vPositions.size());
-		}
-		
-		
-		SunShader.Use();
-		mat4 SunModel;
-		SunModel.Translate(5, 5, 5);
-		SunShader.SetUniformMatrix("Model", SunModel.ToFloatPtr());
-		SunShader.SetUniformMatrix("View", View.ToFloatPtr());
-		SunShader.SetUniformMatrix("Proj", Projection.ToFloatPtr());
-		glBindVertexArray(Sun.m_iVAO);
-		glDrawArrays(Sun.Topology, 0, Sun.m_vPositions.size());
-		SunModel.Translate(10, 10, -5);
-		SunShader.SetUniformMatrix("Model", SunModel.ToFloatPtr());
-		glDrawArrays(Sun.Topology, 0, Sun.m_vPositions.size());
-		
-		
-		
-		/*SunShader.Use();
-		mat4 SunModel;
-		//SunModel.Translate(5, 5, 5);
-		//SunShader.SetUniformMatrix("Model", SunModel.ToFloatPtr());
-		SunShader.SetUniformMatrix("View", View.ToFloatPtr());
-		SunShader.SetUniformMatrix("Proj", Projection.ToFloatPtr());
-		SunShader.SetUniformMatrix("Model", mat4().ToFloatPtr());
-		glBindVertexArray(quad.m_iVAO);
-		glDrawElements(quad.Topology, quad.m_vIndices.size(), GL_UNSIGNED_INT, 0);
-		*/
-		/*glBindVertexArray(AXIS.m_iVAO); 
-		SunShader.SetUniformMatrix("Model", mat4().ToFloatPtr());
-		glDrawElements(AXIS.Topology, AXIS.m_vIndices.size(), GL_UNSIGNED_INT, 0);
-		*/
-		
-		
-		//terrain.PreRender(View, Projection, camera);
-		//terrain.Render();
-		//terrain.PostRender();
-		
-		
-		//pLTB->PreRender(camera.GetViewMatrix(), frustum.GetProjMatrix(),camera);
-		//pLTB->Render();
-		//pLTB->PostRender();
-
-
-		pLTB2->PreRender(camera.GetViewMatrix(), frustum.GetProjMatrix(), camera);
-		pLTB2->Render();
-		pLTB2->PostRender();
-		
-
-		//glDepthFunc(GL_LEQUAL);
-		//sky.Render(SS, Projection);
 		
 		/*
 		mssa->EndFrame();
@@ -242,16 +159,15 @@ int main()
 		text = string("FPS: ") + ss.str();
 		font.Draw(text, 0, 580);
 
-
 		glfwSwapBuffers(gWindow.Window());
 	}
 	// Terminate GLFW, clearing any resources allocated by GLFW.
 	
 	Resources::Release();
+	ShaderManager::Release();
 	Log::OutputFile();
 	delete pScene;
-	//delete pLTB;
-	delete pLTB2;
+	
 	return 0;
 }
 
@@ -291,7 +207,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	float dy = -(float)(ypos - last_y);
 	last_x = xpos;
 	last_y = ypos;
-	camera.OnMouse(dx, dy);
+	TPSCam.OnMouse(dx, dy);
 }
 void scroll_callback(GLFWwindow*, double x, double y)
 {
@@ -300,3 +216,95 @@ void scroll_callback(GLFWwindow*, double x, double y)
 	//Projection = Math::Perspective(30.0f, 4.0 / 3.0, mNear, 500.0f);
 	//frustum.Init(30.0f, 4.0f / 3.0f, mNear, 500.0f);
 }
+
+//glDepthFunc(GL_LESS);
+
+
+//glDisable(GL_CULL_FACE);
+
+
+
+//glEnable(GL_CULL_FACE);
+
+/*
+simple.Use();
+
+simple.SetUniform("EyePos", camera.GetPosition());
+simple.SetUniformMatrix("View", View.ToFloatPtr());
+simple.SetUniformMatrix("Proj", Projection.ToFloatPtr());
+simple.SetUniform("material.shininess", 128.0f);
+spotLight.Position = camera.GetPosition();
+spotLight.Direction = camera.GetFront();
+
+spotLight.SendData(&simple);
+dirLight.SendData(&simple);
+pointLight1.SendData(&simple, 0);
+pointLight2.SendData(&simple, 1);
+
+
+
+contaner2->Bind(0);
+simple.SetUniform("diffuseMap", 0);
+contaner2_spec->Bind(1);
+simple.SetUniform("specularMap", 1);
+
+
+glBindVertexArray(cube.m_iVAO);
+mat4 Model;
+for (int i = -5; i < 5; i++)
+{
+Model.Translate(0.0, 0.0, i * 5.0f + 10.0f);
+//if (!frustum.Inside(Vec3(0, 0, i * 5.0f + 10.0f))) continue;
+simple.SetUniformMatrix("Model", Model.ToFloatPtr());
+glDrawArrays(cube.Topology, 0, cube.m_vPositions.size());
+}
+
+
+SunShader.Use();
+mat4 SunModel;
+SunModel.Translate(5, 5, 5);
+SunShader.SetUniformMatrix("Model", SunModel.ToFloatPtr());
+SunShader.SetUniformMatrix("View", View.ToFloatPtr());
+SunShader.SetUniformMatrix("Proj", Projection.ToFloatPtr());
+glBindVertexArray(Sun.m_iVAO);
+glDrawArrays(Sun.Topology, 0, Sun.m_vPositions.size());
+SunModel.Translate(10, 10, -5);
+SunShader.SetUniformMatrix("Model", SunModel.ToFloatPtr());
+glDrawArrays(Sun.Topology, 0, Sun.m_vPositions.size());
+
+
+
+/*SunShader.Use();
+mat4 SunModel;
+//SunModel.Translate(5, 5, 5);
+//SunShader.SetUniformMatrix("Model", SunModel.ToFloatPtr());
+SunShader.SetUniformMatrix("View", View.ToFloatPtr());
+SunShader.SetUniformMatrix("Proj", Projection.ToFloatPtr());
+SunShader.SetUniformMatrix("Model", mat4().ToFloatPtr());
+glBindVertexArray(quad.m_iVAO);
+glDrawElements(quad.Topology, quad.m_vIndices.size(), GL_UNSIGNED_INT, 0);
+*/
+/*glBindVertexArray(AXIS.m_iVAO);
+SunShader.SetUniformMatrix("Model", mat4().ToFloatPtr());
+glDrawElements(AXIS.Topology, AXIS.m_vIndices.size(), GL_UNSIGNED_INT, 0);
+*/
+
+
+//terrain.PreRender(View, Projection, camera);
+//terrain.Render();
+//terrain.PostRender();
+
+
+//pLTB->PreRender(camera.GetViewMatrix(), frustum.GetProjMatrix(),camera);
+//pLTB->Render();
+//pLTB->PostRender();
+
+
+//pLTB2->PreRender(camera.GetViewMatrix(), frustum.GetProjMatrix(), camera);
+//pLTB2->Render();
+//pLTB2->PostRender();
+
+
+//glDepthFunc(GL_LEQUAL);
+//sky.Render(SS, Projection);
+

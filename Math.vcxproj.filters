@@ -50,11 +50,11 @@
     <Filter Include="World\Terrain">
       <UniqueIdentifier>{161874fe-5a16-4f9a-8b89-30db67ce2d1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Math\BV">
+      <UniqueIdentifier>{49dc29f5-1619-44aa-bfe1-4303de76cc46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Math\EulerAngles.cpp">
       <Filter>Math</Filter>
     </ClCompile>
@@ -193,9 +193,6 @@
     <ClCompile Include="Mesh\SkeletonNode.cpp">
       <Filter>Mesh\LTB</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh\LTBRender.cpp">
-      <Filter>Mesh\LTB</Filter>
-    </ClCompile>
     <ClCompile Include="Mesh\LTBMesh.cpp">
       <Filter>Mesh\LTB</Filter>
     </ClCompile>
@@ -204,6 +201,34 @@
     </ClCompile>
     <ClCompile Include="Scene\Scene.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\PlayerMotion.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SocketItem.cpp">
+      <Filter>Mesh\LTB</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ModelRender.cpp">
+      <Filter>Mesh\LTB</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\CharPlayer.cpp">
+      <Filter>Mesh\LTB</Filter>
+    </ClCompile>
+    <ClCompile Include="iostream.cpp" />
+    <ClCompile Include="Scene\TPSCamera.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\ShaderManager.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Monster.cpp">
+      <Filter>Mesh\LTB</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Sphere.cpp">
+      <Filter>Math\BV</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\AABB.cpp">
+      <Filter>Math\BV</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -364,14 +389,38 @@
     <ClInclude Include="Mesh\SkeletonNode.h">
       <Filter>Mesh\LTB</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh\LTBRender.h">
-      <Filter>Mesh\LTB</Filter>
-    </ClInclude>
     <ClInclude Include="World\Terrain.h">
       <Filter>World\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="Scene\Scene.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\PlayerMotion.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SocketItem.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ModelRender.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\CharPlayer.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\TPSCamera.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ShaderManager.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Monster.h">
+      <Filter>Mesh\LTB</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Sphere.h">
+      <Filter>Math\BV</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\AABB.h">
+      <Filter>Math\BV</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

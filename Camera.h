@@ -4,8 +4,8 @@ class Camera
 {
 	friend class Frustum;
 	friend class MapRenderer;
-private:
-	Vec3 m_Position;
+protected:
+	Vec3 m_Position; // position of camera
 	Vec3 m_Front;
 	Vec3 m_Right;
 	Vec3 WorldUp;
@@ -15,7 +15,7 @@ private:
 	float m_Yaw;	// y axis
 	float MouseSensitivity;
 
-private:
+protected:
 	void UpdateVector();
 public:
 	Camera();
@@ -24,9 +24,9 @@ public:
 	Camera(const Vec3& pos, const Vec3& target, const Vec3& up);
 	~Camera();
 
-	void OnKeyboard(int key,float deltaTime);
-	void Update(float dt);
-	void OnMouse(float dx, float dy);
+	//virtual void OnKeyboard(int key,float deltaTime);
+	virtual void Update(float dt);
+	virtual void OnMouse(float dx, float dy);
 	mat4 GetViewMatrix();
 
 	inline void SetSpeed(float speed) { m_Speed = speed; };

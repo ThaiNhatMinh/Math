@@ -20,7 +20,7 @@ private:
 	GLuint m_iVAO;
 	GLuint m_iVBO;
 	mat4 m_Proj;
-	Shader m_Shader;
+	Shader* m_pShader;
 private:
 	void InitBuffer();
 public:
